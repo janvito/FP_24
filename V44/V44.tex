@@ -1,0 +1,80 @@
+\documentclass[12pt]{article}
+
+% PACKAGES
+\usepackage[ngerman]{babel}
+\usepackage{lmodern} % Schriftart
+\usepackage{bookmark} % Für PDF Lesezeichen
+\usepackage{caption} % Für \caption*{}
+\usepackage{siunitx} % SI-Einheiten
+\usepackage{mathtools} % Verbessertes "amsmath" (https://de.overleaf.com/learn/latex/Articles%2FMathtools_-_for_beautiful_math)
+\usepackage{xcolor}   % Farbiger Text (https://www.overleaf.com/learn/latex/Using_colours_in_LaTeX)
+\usepackage{geometry} % Zur Einstellung des Layouts
+\usepackage{titlesec} % Einteilung des Inhalts (https://de.overleaf.com/learn/latex/Sections_and_chapters)
+\usepackage{fancyhdr} % Für Kopf-/ und Fußzeilen (https://www.overleaf.com/learn/latex/Headers_and_footers)
+\usepackage{parskip} % Änderung von Absätzen und Absatzeinzügen
+\usepackage{biblatex} % Verweise und Referenzen
+\usepackage{float} % Benötogt für Figuren und Tabellen
+\usepackage{graphicx} % Platzhalter Bilder
+\usepackage{booktabs} % Tabellen
+\usepackage{csquotes} % Recommended package for biblatex
+
+% SETUP 
+\setlength{\headheight}{14.5pt} % Set headheight to at least 14.5pt
+\addtolength{\topmargin}{-2.5pt} % Make topmargin smaller to compensate
+\sisetup{
+  per-mode=fraction,
+  fraction-function=\tfrac,
+  separate-uncertainty=true
+}
+\addbibresource{Ressourcen/V44.bib}
+\geometry{ %A4
+  a4paper,
+  total = {170mm,240mm},
+  left = 20mm,
+  top = 30mm
+}
+\pagestyle{fancy}
+
+% COMMANDS
+\newcommand{\uproman}[1]{\uppercase\expandafter{\romannumeral#1}} % Römische Zahlen
+
+
+% DOC
+\begin{document}
+
+% HEADER
+\begin{titlepage}
+  \centering
+  \vspace*{1cm}
+  \includegraphics[width=0.5\textwidth]{Ressourcen/tud_logo_schwarz(RGB)}\\
+  \vspace*{0.25cm}
+  \large\textmd{Fakultät Physik} \\
+  \vspace*{6cm}
+  \huge \bfseries FP-2024 - Versuch V44\\
+  \vspace*{0.25cm}
+  \large Röntgenreflektometrie\\
+  \vspace*{0.25cm}
+  \large\textmd{\href{mailto:martin.boussard@tu-dortmund.de}{Martin Boussard}} \\
+  \large\textmd{\href{mailto:jan.oppoli@tu-dortmund.de}{Jan Oppoli}} \\
+  \vfill
+  \small\textmd{Versuch durchgeführt am 22. April 2024}\\
+  \small\textmd{Abgabe erstellt am \today}
+\end{titlepage}
+\tableofcontents 
+\newpage
+
+\section{Zielsetzung}\label{sec:zielsetzung}
+
+\section{Theorie}\label{sec:theorie}
+Anleitung:\cite{anleitung}
+\section{Auswertung}\label{sec:auswertung}
+
+\section{Diskussion}\label{sec:diskussion}
+
+\section{Literaturverzeichnis}\label{sec:literaturverzeichnis}
+\printbibliography[heading = none]
+\newpage
+
+\section{Anhang}\label{sec:anhang}
+
+\end{document}

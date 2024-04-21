@@ -1,0 +1,15 @@
+*.log
+*.aux
+*.toc
+*.gz
+*.fdb_latexmk
+*.fls
+*.bbl
+*.bcf
+*.blg
+*.xml
+*.synctex(busy)
+*.idea/
+*.iml
+*.DS_Store
+*.vscode/
