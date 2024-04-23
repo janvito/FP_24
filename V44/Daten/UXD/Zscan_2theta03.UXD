@@ -1,0 +1,107 @@
+; C:\DIFFDAT1\Praktikum\Boussard_Oppoli\Zscan_2theta03.raw(Diffrac Plus V1.01 file) converted by XCH V1.0
+_FILEVERSION=2
+_SITE='Deutschland'
+_USER='Administrator'
+_GONIOMETER_CODE=4885
+; D8 Theta/Theta; Special
+_SAMPLE_CHANGER_CODE=0
+_ATTACHMENTS_CODE=0
+_GONIOMETER_RADIUS=350.000000
+_FIXED_DIVSLIT=0.600000
+_FIXED_SAMPLESLIT=0.000000
+_FIXED_DETSLIT=11.660000
+_MONOCHROMATOR=0
+; None
+_THIN_FILM='N'
+_BETA_FILTER='Y'
+_FIXED_ANTISLIT=8.340000
+_ANALYZER_CODE=0
+; None
+_DATEMEASURED='22-Apr-2024 11:03:02'
+_WL_UNIT='A'
+_WL1=1.540600
+_WL2=1.544390
+_WL3=1.392220
+_WLRATIO=0.500000
+_ANODE='Cu'
+; (Data for Range number 1)
+_DRIVE='Z'
+_STEPTIME=0.500000
+_STEPSIZE=0.020000
+_STEPMODE='S'
+_START=-0.500000
+_THETA=0.000000
+_2THETA=0.300000
+_KHI=0.000000
+_PHI=92.459999
+_X=-0.513000
+_Y=-1.200000
+_Z=-0.500000
+_DIVERGENCE=0.000000
+_ANTISCATTER=0.000000
+_DETECTOR=5
+_DETECTORSLIT='unkn'
+_AUX1=0.000000
+_AUX2=0.000000
+_AUX3=0.000000
+_TIMESTARTED=2.000000
+_TEMP_RATE=-1.000000
+_TEMP_DELAY=-1.000000
+_KV=40
+_MA=35
+_RANGE_WL=1.540600
+_3DPLANE=0
+_GONIOMETER=0.300000
+_PSDCHANNEL0=0
+_2THETACOUNTS
+  -0.5000       200
+  -0.4800       190
+  -0.4600       189
+  -0.4400       189
+  -0.4200       190
+  -0.4000       186
+  -0.3800       202
+  -0.3600       203
+  -0.3400       193
+  -0.3200       200
+  -0.3000       182
+  -0.2800       181
+  -0.2600       196
+  -0.2400       212
+  -0.2200       171
+  -0.2000       183
+  -0.1800       178
+  -0.1600       217
+  -0.1400       204
+  -0.1200       201
+  -0.1000       190
+  -0.0800       193
+  -0.0600       214
+  -0.0400       220
+  -0.0200       208
+   0.0000       214
+   0.0200       179
+   0.0400       200
+   0.0600       187
+   0.0800       205
+   0.1000       199
+   0.1200       184
+   0.1400       193
+   0.1600       204
+   0.1800       202
+   0.2000       191
+   0.2200       224
+   0.2400       216
+   0.2600       205
+   0.2800       196
+   0.3000       192
+   0.3200       211
+   0.3400       201
+   0.3600       180
+   0.3800       216
+   0.4000       197
+   0.4200       236
+   0.4400       186
+   0.4600       199
+   0.4800       219
+   0.5000       227
