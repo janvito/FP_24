@@ -106,19 +106,23 @@ entsprechend der Winkel in \autoref{fig:2} dargestellt, wobei nach dem Reflexion
   \includegraphics[scale=0.3]{Ressourcen/Snellius.png}
   \caption{Skizze der Winkel des einfallenden, ausfallenden und\\ gebrochenen Strahls and einer Grenzfläche.}\cite{uni_giessen}\label{fig:2}
 \end{figure}
-Der komplexe Brechungsindex $n$ von verschiedenen Medien rührt von Lorentz-Oszillator-Modell für Fest-körper her, bei welchem sich im hochfrequenten Näherungsfall der Röntgenstrahlung die folgende Formel für nicht-ferromagnetische Materialien  
+Der komplexe Brechungsindex $n$ von verschiedenen Medien, welcher die variierte Lichtgeschwindigkeit im jeweiligen Material beschreibt, rührt von Lorentz-Oszillator-Modell für Fest-körper her, bei welchem sich im hochfrequenten Näherungsfall der Röntgenstrahlung die folgende Formel für nicht-ferromagnetische Materialien  
 \begin{align}
   n=\sqrt{\epsilon_\text{r}}=1-\frac{\rho r_0}{2\pi}\lambda^2+i \frac{\gamma}{4\pi}\lambda \coloneqq 1-\delta+i\beta\label{eq:n}
 \end{align}
 mit Elektronenradius $r_0$, Elektronendichte $N$, Wellenlänge $\lambda$ und linearem Absorptionskoeffizient $\gamma$ zusammengefasst in Kenngrößen der Dispersion $\delta$ und dem Absorption $\beta$, ergibt. 
 \\\linebreak Besonderheit der Röntgenstrahlung ist, dass für sie jedes Medium geringfügig optisch dünner als das Vakuum erscheint, womit im Gegensatz zu sichtbarem Licht Totalreflexion im Übergang von Vakuum zu Medium auftreten kann.
-Dies tritt gemäß \autoref{eq:snellius}, \ref{eq:n} für Winkel
+Dies tritt gemäß \autoref{eq:snellius}, \ref{eq:n} für Winkel kleiner als
 \begin{align}
-  \alpha_\text{Krit} < \sqrt{2 \delta} = \lambda \sqrt{\frac{\rho r_0}{\pi}}
+  \alpha_\text{Krit} = \sqrt{2 \delta} = \lambda \sqrt{\frac{\rho r_0}{\pi}}
 \end{align}
 auf, da der Cosinus für derart kleine betrachtete Winkel mithilfe seiner Taylorreihe angenährt werden kann.
+Des weiteren gilt aufgrund der speziellen Umstände die Formel
+\begin{align}
+  \alpha_\text{t} = \sqrt{\alpha^2-2\delta}\text{.}
+\end{align}
 \subsection{Fresnelsche Formeln}
-Hergeleitet mithilfe der Maxwell-Gleichungen an Grenzschichten ergeben sich für das Amplitudenverhältnisses von einfallender und reflektierter Welle die Formeln
+Hergeleitet mithilfe der Maxwell-Gleichungen an Grenzschichten ergeben sich für das Amplitudenverhältnis von reflektierter und einfallender Welle die Formeln
 \begin{align}
   r_\text{s} &= \frac{n_1\sin{\alpha}-\frac{\mu_\text{r1}}{\mu_\text{r2}}n_2\sin{\alpha_\text{t}}}{n_1\sin{\alpha}+\frac{\mu_\text{r1}}{\mu_\text{r2}}n_2\sin{\alpha_\text{t}}}\\
   r_\text{p} &= \frac{2n_1\sin{\alpha}}{\frac{\mu_\text{r1}}{\mu_\text{r2}}n_2\sin{\alpha}+n_1\sin{\alpha_\text{t}}}\text{,}
@@ -126,8 +130,70 @@ Hergeleitet mithilfe der Maxwell-Gleichungen an Grenzschichten ergeben sich für
 wobei zwischen parallel und senkrecht zur Einfallsebene polarisierter Strahlung unterschieden wird. Die verwendeten Winkel sind die selben wie oben in \autoref{eq:snellius}.
 Im konkreten Fall der hochfrequenten Röntgenstrahlung mit streifendem Einfall vereinfachen sich die Formeln enorm zu
 \begin{align}
-  r = r_\text{s,p} = \frac{\alpha-\alpha_\text{t}{\alpha+\alpha_\text{t}}}
+  r = r_\text{s,p} = \frac{\alpha-\alpha_\text{t}}{\alpha+\alpha_\text{t}}\text{,}
 \end{align}
+wobei auffällt, dass nicht mehr zwischen parallel und senkrecht polarisierter Strahlung unterschieden werden muss.
+Zur Bestimmung der Reflexivität $R=\frac{I_\text{R}}{I_0}=|r|^2$, des Intensitätsverhält-nisses der zwei Strahlen, muss lediglich der zuvor bestimmte Reflexionskoeffizient quadriert werden.
+\subsection{Interferenz an dünnen Schichten}
+Im Falle, dass der Anteil der transmittierten Welle anschließend an der Grenze zum Substrat reflektiert wird und somit aus der Schicht wieder austreten kann, ist es möglich Interferenz zwischen ursprünglich reflektierter und eingedrungener, am Substrat reflektierter Strahlung zu beobachten. Dies ist in \autoref{fig:3} zu sehen.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.3]{Ressourcen/schicht.png}
+  \caption{Querschnitt des Modells einer dünnen Schicht auf einem Substrat,\\ welches an der Grenzfläche ebenfalls reflektiv ist. Der halbe Gangunterschied \\ ist rot hervorgehoben.}\label{fig:3}
+\end{figure}
+Konstruktive Interferenz kann in diesem Fall auftreten, falls der effektive Gangunterschied des eingedrungenen Strahls ein mehrfaches der Wellenlänge der betrachteten Strahlung ist.
+Je nachdem, wie oft der Strahl in der dünnen Schicht zwischen der Grenze von Vakuum und Substrat hin und herläuft, modifiziert sich seine resultierende Intensität mit den verschiedenen reflexions und transmissionskoeffizienten $r$,$t$ der Grenzübergänge.
+Durch Nutzung von Relationen welche aus den Fresnelschen Formeln folgen, ergibt sich die Formel
+\begin{align}
+  r_\text{ges}= \frac{r_{0\to1}+r_{1\to2}p^2}{1+r_{0\to1}r_{1\to2}p^2}\text{.}\label{eqn:schicht}
+\end{align}
+Die Indizes der Reflexionskoeffizienten geben an, zwischen welchen unterschiedlichen Medien der Übergang stattfindet und im Faktor $p^2=e^{ik\Delta_\text{eff}}\approx e^{ik_\text{z,0}d} \approx e^{2ik}$ mit dem transmittierten Wellenvektor senkrecht zur Grenzfläche $k_\text{z,0}$ und der Schichtdicke $d$ wird der Gangunterschied der Wellenbündel berücksichtigt.
+Wie bereits aus der Formel ersichtlich, treten für die Reflexivität $R_\text{ges}=|r_\text{ges}|^2$ Oszillationen auf.
+Diese werden Kiessig-Oszillationen genannt und weisen die Periode, den Abstand zwischen zwei Maxima 
+\begin{align}
+  T_\alpha = \frac{\lambda}{2d}
+\end{align}
+auf, worüber die Schichtdicke indirekt bestimmt werden kann.
+\subsection{Reflexion und Transmission an Mehrschichtsystemen}\label{subsec:multilevel}
+Die oben genannten physikalischen Prozesse bei Brechung von Röntgenstrahlung an einer Schicht treten, wenn auch weitaus schwierieger zu charakterisieren, ebenfalls bei Mehrschichtigen System wie etwa in \autoref{fig:4} abgebildet auf.
+An jeder Grenzfläche wird der Lichtstrahl sowohl gebrochen und transmittiert als auch reflektiert, beschrieben durch die Intensitätskoeffizienten $I_\text{j}$ und $T_\text{j}$, wobei $\text{j}$ der Index des jeweiligen Grenzübergangs ist.
+Ausgehend von $R_\text{n+1}$, der Annahmem, dass ins Substrat eingedrungene Licht aufgrund von vollständiger Absorption nicht wieder am Boden reflektiert wird, können die Transmissions- und Reflexionskoeffizienten rekursiv mittels des Parratt-Algorithmus berechnet werden.
+Dies erfolgt mittels der Gleichung
+\begin{align}
+  X_\text{j} = e^{-2ik_\text{z,j}z_\text{j}}\frac{r_\text{j,j+1}+X_\text{j+1}e^{2ik_\text{z,j+1}z_\text{j}}}{1+r_\text{j,j+1}X_\text{j+1}e^{2ik_\text{z,j+1}z_\text{j}}}
+\end{align}
+inklusive der Reflexionskoeffizienten
+\begin{align}
+  r_\text{j,j+1}=\frac{k_\text{z,j}-k_\text{z,j+1}}{k_\text{z,j}+k_\text{z,j+1}}
+\end{align}
+und den Wellenvektorkomponenten
+\begin{align}
+  k_\text{z,j}&=\frac{2\pi}{\lambda}\sin{\alpha}\\
+  k_\text{z,j+1}&=\frac{2\pi}{\lambda}\sqrt{n^2-cos^2{\alpha}}\text{.}
+\end{align}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.12]{Ressourcen/mehrschicht.png}
+  \caption{Skizzierung eines n-schichtigen Systems, mit n individuellen\\ Grenzflächen und Brechungsindizes\cite{juwi2015}}\label{fig:4}
+\end{figure}
+\subsection{Rauigkeit}{\label{subsec:rauigkeit}}
+Um die unebenheit der untersuchten Probe zu berücksichtigen, müssen einige Korrekturen eingeführt werden.
+Mit der Annahme, dass die mittlere Abweichung von der durchschnittlichen Schichthöhe $\sigma$ weitaus kleiner als die Schichtdicke ist, kann die Unebenheit der Oberfläche annähernd Gaußverteilt beschrieben werden.
+Der transformierte Reflexionskoeffizient
+\begin{align}
+    r_\text{j,j+1}'=r_\text{j,j+1}\cdot e^{-2k_\text{z,j}k_\text{z,j+1}\sigma^2}
+\end{align}
+reicht im gegebenen Kontext als Approximation aus.
+\subsection{Geometriefaktor}
+Der Geometriefaktor $ G $ spielt eine Rolle bei der Berücksichtigung des Einfallswinkels, ab dem der gesamte Strahl die Probenoberfläche erreicht und reflektiert wird. Dieser kritische Einfallswinkel wird als Geometriewinkel $ \alpha_g $ bezeichnet. Wenn der Einfallswinkel $ \alpha_i $ kleiner als der Geometriewinkel ist, wird der Geometriefaktor $ G $ durch die folgende Beziehung definiert:
+\begin{align*}
+G = \frac{D \sin(\alpha_i)}{d_0}
+\end{align*}
+Hierbei ist $ D $ der Durchmesser der Probenoberfläche und $ d_0 $ die Höhe des Strahls. Wenn $ \alpha_i $ größer als $ \alpha_g $ ist, wird $ G $ als 1 angenommen.
+
+Wenn $ \alpha_i $ sehr klein ist, überstreicht der Strahl eine größere Fläche als die Probenoberfläche, sodass nicht die gesamte eingestrahlte Intensität von der Probenoberfläche reflektiert wird, die in den Detektor gelangen kann. Dies führt zu einem Rückgang der Reflektivität im Bereich sehr kleiner Winkel $ \alpha_i < \alpha_g $. Der Geometriefaktor $ G $ berücksichtigt diesen Effekt und wird als Verhältnis der Strahlbreite $ D \sin(\alpha_i) $, die die Probenoberfläche erreicht, zur Gesamtstrahlbreite $ d_0 $ definiert.
+
+\section{Durchführung}{\label{sec:durchfuehrung}}
 \section{Auswertung}\label{sec:auswertung}
 
 \section{Diskussion}\label{sec:diskussion}
