@@ -110,24 +110,24 @@ Der komplexe Brechungsindex $n$ von verschiedenen Medien, welcher die variierte 
 \begin{align}
   n=\sqrt{\epsilon_\text{r}}=1-\frac{\rho r_0}{2\pi}\lambda^2+i \frac{\gamma}{4\pi}\lambda \coloneqq 1-\delta+i\beta\label{eq:n}
 \end{align}
-mit Elektronenradius $r_0$, Elektronendichte $\rho$, Wellenlänge $\lambda$ und linearem Absorptionskoeffizient $\gamma$ zusammengefasst in Kenngrößen der Dispersion $\delta$ und dem Absorption $\beta$, ergibt. 
+mit Elektronenradius $r_0$, Elektronendichte $\rho$, Wellenlänge $\lambda$ und linearem Absorptionskoeffizient $\gamma$ zusammengefasst in Kenngrößen der Dispersion $\delta$ und der Absorption $\beta$, ergibt. 
 \\\linebreak Besonderheit der Röntgenstrahlung ist, dass für sie jedes Medium geringfügig optisch dünner als das Vakuum erscheint, womit im Gegensatz zu sichtbarem Licht Totalreflexion im Übergang von Vakuum zu Medium auftreten kann.
 Dies tritt gemäß \autoref{eq:snellius}, \ref{eq:n} für Winkel kleiner als
 \begin{align}
   \alpha_\text{Krit} = \sqrt{2 \delta} = \lambda \sqrt{\frac{\rho r_0}{\pi}}
 \end{align}
 auf, da der Cosinus für derart kleine betrachtete Winkel mithilfe seiner Taylorreihe angenährt werden kann.
-Des weiteren gilt aufgrund der speziellen Umstände die Formel
+Somit gilt die Formel
 \begin{align}
   \alpha_\text{t} = \sqrt{\alpha^2-2\delta}\text{.}
 \end{align}
 \subsection{Fresnelsche Formeln}
 Hergeleitet mithilfe der Maxwell-Gleichungen an Grenzschichten ergeben sich für das Amplitudenverhältnis von reflektierter und einfallender Welle die Formeln
 \begin{align}
-  r_\text{s} &= \frac{n_1\sin{\alpha}-\frac{\mu_\text{r1}}{\mu_\text{r2}}n_2\sin{\alpha_\text{t}}}{n_1\sin{\alpha}+\frac{\mu_\text{r1}}{\mu_\text{r2}}n_2\sin{\alpha_\text{t}}}\\
-  r_\text{p} &= \frac{2n_1\sin{\alpha}}{\frac{\mu_\text{r1}}{\mu_\text{r2}}n_2\sin{\alpha}+n_1\sin{\alpha_\text{t}}}\text{,}
+  r_\text{s} &= \frac{k_\text{i,z}-k_\text{t,z}}{k_\text{i,z}-k_\text{t,z}}\\
+  r_\text{p} &= \frac{n^2k_\text{i,z}-k_\text{t,z}}{n^2k_\text{i,z}-k_\text{t,z}}\text{,}
 \end{align}
-wobei zwischen parallel und senkrecht zur Einfallsebene polarisierter Strahlung unterschieden wird. Die verwendeten Winkel sind die selben wie oben in \autoref{eq:snellius}.
+mit den z-Komponenten des einfallenden sowie transmittierten Wellenvektors $k_\text{z}=2k\sin{\alpha}$, wobei zwischen parallel und senkrecht zur Einfallsebene polarisierter Strahlung unterschieden wird. Die verwendeten Winkel sind die selben wie oben in \autoref{eq:snellius}.
 Im konkreten Fall der hochfrequenten Röntgenstrahlung mit streifendem Einfall vereinfachen sich die Formeln enorm zu
 \begin{align}
   r = r_\text{s,p} = \frac{\alpha-\alpha_\text{t}}{\alpha+\alpha_\text{t}}\text{,}
