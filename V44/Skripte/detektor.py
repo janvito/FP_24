@@ -47,7 +47,28 @@ for uparam in uparams1:
 print("\nFitted parameters for detector 2:")
 for uparam in uparams2:
     print(f"{uparam:.3e}")
+gaussvalues = gauss(_theta1, *params1)
+print(f"max Intensity: {np.max(gaussvalues)}")
+Imax=np.max(gaussvalues)
+# Calculate Full Width at Half Maximum (FWHM)
+def calculate_fwhm(stddev):
+    return 2 * np.sqrt(2 * np.log(2)) * stddev
 
+# Calculate FWHM for both detectors
+fwhm1 = calculate_fwhm(uparams1[1].nominal_value)  # Using stddev parameter
+fwhm2 = calculate_fwhm(uparams2[1].nominal_value)
+
+# Calculate uncertainties in FWHM
+def calculate_fwhm_uncertainty(stddev, stddev_err):
+    fwhm = calculate_fwhm(stddev)
+    return fwhm * np.sqrt((stddev_err / stddev) ** 2)
+
+fwhm1_err = calculate_fwhm_uncertainty(uparams1[1].nominal_value, uparams1[1].std_dev)
+fwhm2_err = calculate_fwhm_uncertainty(uparams2[1].nominal_value, uparams2[1].std_dev)
+
+# Print FWHM with uncertainties
+print("FWHM for detector 1: {:.3f} ± {:.3f}".format(fwhm1, fwhm1_err))
+print("FWHM for detector 2: {:.3f} ± {:.3f}".format(fwhm2, fwhm2_err))
 # Plot the data and fitted Gaussian functions for both detectors
 plt.plot(theta1, counts1, "k.", label=r'Data')
 plt.plot(_theta1, gauss(_theta1, *params1),"r-", label=r"Fitted Gaussian")
