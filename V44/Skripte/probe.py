@@ -31,7 +31,7 @@ delta_ = Nr0 * lamda ** 2 / (2 * np.pi) #Formel aus Quellen
 print("delta aus Werten aus Skript: ",delta_)
 delta = 7.6 * 10 ** (-6) #literaturwert
 print("delta aus Anleitungs: ",delta)
-
+delta_polysterol = 3.5*10**(-6)
 Imax = 445506 * 5 # Aus dem Detektorscan
 
 # Functions
@@ -39,12 +39,12 @@ def G(alpha):
     return (D * np.sin(alpha * 2 * np.pi / 360) / d0)
 
 def alphat(alpha):
-    return np.sqrt(alpha**2-a_c**2)
+    return np.sqrt(alpha**2-a_c_silicium**2)
 
 def fresnel2(thetas):
     retheta=[]
     for theta in thetas:
-        if theta < a_c:
+        if theta < a_c_silicium:
             retheta.append(1)
         else:
             #theta-=thetaclean[43]
@@ -57,8 +57,9 @@ plt.ylabel(r"Counts")
 plt.yscale('log')
 
 # Load and process data
-a_c = np.sqrt(2 * delta) * 360 / (2 * np.pi)
-print("a_c=",a_c)
+a_c_silicium = np.sqrt(2 * delta) * 360 / (2 * np.pi)
+a_c_polysterol = np.sqrt(2 * delta_polysterol) * 360 / (2 * np.pi)
+print("a_c=",a_c_silicium)
 theta1, counts1 = np.genfromtxt('../Daten/CSV_Output/MessungProbe.csv', delimiter=',', skip_header=1, unpack=True)
 theta2, counts2 = np.genfromtxt('../Daten/CSV_Output/MessungProbeDiffus.csv', delimiter=',', skip_header=1, unpack=True)
 theta1, counts1, theta2, counts2 = theta1[theta1 < 1], counts1[theta1 < 1], theta2[theta1 < 1], counts2[theta1 < 1]
@@ -101,7 +102,8 @@ print("Schichtdicke= ", layer_thickness)
 plt.plot(thetaclean, countsclean, "k-", label=r'Bereinigter Scan')
 plt.plot(thetaclean, countsG, "r-", label=r'Korrigierter Scan')
 plt.plot(thetaclean[peaks], countsG[peaks], "rx")
-plt.axvline(a_c,color='green',label=r'Kritischer Winkel')
+plt.axvline(a_c_silicium,color='green',label=r'Kritischer Winkel Silizium')
+plt.axvline(a_c_polysterol,color='green',alpha=0.5,label=r'Kritischer Winkel Polysterol')
 # Save the plot
 plt.legend(prop={'size': 16})
 plt.tight_layout()
