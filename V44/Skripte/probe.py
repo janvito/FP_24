@@ -22,27 +22,33 @@ rho = 2.336
 r_0 = 5.29e-11
 Mm = 28 * c.u
 N = rho * Z / Mm
-lamda = 1.5e-10
-delta = N * r_0 * lamda ** 2 / (2 * np.pi) #Formel aus Quellen
+lamda = 1.5*10**(-10)
+print("Nr0: ",N*r_0)
+Nr0=20*10**10
+delta_ = N * r_0 * lamda ** 2 / (2 * np.pi) #Formel aus Quellen
+print("delta aus Werten mit N selber berechnet: ",delta_)
+delta_ = Nr0 * lamda ** 2 / (2 * np.pi) #Formel aus Quellen
+print("delta aus Werten aus Skript: ",delta_)
 delta = 7.6 * 10 ** (-6) #literaturwert
+print("delta aus Anleitungs: ",delta)
+
 Imax = 445506 * 5 # Aus dem Detektorscan
 
 # Functions
 def G(alpha):
-    return D * np.sin(alpha * 2 * np.pi / 360) / d0
+    return (D * np.sin(alpha * 2 * np.pi / 360) / d0)
 
 def alphat(alpha):
-    return np.arccos(1 / (1 - delta) * np.cos(alpha))
+    return np.sqrt(alpha**2-a_c**2)
 
 def fresnel2(thetas):
-
     retheta=[]
     for theta in thetas:
         if theta < a_c:
             retheta.append(1)
         else:
-            theta-=thetaclean[43]
-            retheta.append((theta - alphat(theta)) / (theta + alphat(theta)))
+            #theta-=thetaclean[43]
+            retheta.append(((theta - alphat(theta)) / (theta + alphat(theta)))**2)
     return retheta
 
 # Prepare for plotting
@@ -90,12 +96,12 @@ T_u = ufloat(T_a, T_s)
 layer_thickness = lamda / (2 * T_u)
 print("Schichtdicke= ", layer_thickness)
 
+
 # Plot corrected data
 plt.plot(thetaclean, countsclean, "k-", label=r'Bereinigter Scan')
 plt.plot(thetaclean, countsG, "r-", label=r'Korrigierter Scan')
 plt.plot(thetaclean[peaks], countsG[peaks], "rx")
-plt.axvline(a_g,color='green',label=r'Berechneter Geometriewinkel')
-plt.axvline(a_g_gemessen,color='green',alpha=0.5,label=r'Gemessener Geometriewinkel')
+plt.axvline(a_c,color='green',label=r'Kritischer Winkel')
 # Save the plot
 plt.legend(prop={'size': 16})
 plt.tight_layout()
