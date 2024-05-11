@@ -2,6 +2,8 @@ import numpy as np
 import csv
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
+from scipy.optimize import minimize
+import random
 
 # Enable LaTeX rendering in Matplotlib
 plt.rc('text', usetex=True)
@@ -17,8 +19,8 @@ def parratt(a_i, del2, del3, sig1, sig2, b2, b3, d2):
     a_irad = np.deg2rad(a_i)
     k = 2 * np.pi / lamda
 
-    n2 = 1 - del2 + b2 * 1j
-    n3 = 1 - del3 + b3 * 1j
+    n2 = 1 - del2 - b2 * 1j
+    n3 = 1 - del3 - b3 * 1j
 
     kz1 = k * np.sqrt(1 - np.cos(a_irad) ** 2)
     kz2 = k * np.sqrt(n2 ** 2 - np.cos(a_irad) ** 2)
@@ -39,20 +41,56 @@ def parratt(a_i, del2, del3, sig1, sig2, b2, b3, d2):
 # Load data
 theta, counts = np.genfromtxt('../Daten/CSV/probenscan_clean.csv', delimiter=',', unpack=True)
 theta, counts = theta[15:100], counts[15:100]
+_theta=np.linspace(theta[0],theta[-1],1000)
 counts = np.log(counts)
 layer_thickness = 1.7e-9
 layer_thickness2 = 6.819180819180819e-08
-lamda = 1.5 * 10**(-10)
-initial_guess1 = np.array([6.69143022e-06, 6.63675964e-06, 8.60667821e-10, 5.58822780e-10, 2.25500661e-07, 1.20162786e-06, 7.70159198e-08])#von komplizierteren Fit methode mit manuell angepassten parametern
-initial_guess1 = [8.912087912087914e-06, 3.5861738261738266e-06, 4.665934065934067e-09/10, 5.810897702297702e-10/10, 5.337472527472534e-08/10, 2.84021978021978e-06/10, 6.819180819180819e-08]
-    
-# Minimize the custom loss function
-result,_ = curve_fit(parratt,theta,counts, initial_guess1)
+lamda = 1.54 * 10**(-10)
+initial_guess1 = np.array([7.648577896993004e-06 ,0.0012410968451660746 ,1.8963141350166085e-09 ,3.4233238181111846e-08 ,3.643402232484923e-07*1.5*1.3 ,1.0573950235770515e-05*0.9 ,2.416951357029224e-06])
+initial_guess1 = np.array([7.9557e-06 ,1.2046e-03 ,1.7548e-09 ,3.3993e-08 ,6.2143e-07 ,9.1987e-06 ,2.4208e-06])
+fig, axes = plt.subplots(2, 3, figsize=(15, 10))
 
-# Plotting
-plt.plot(theta, counts, label='Data')
-plt.plot(theta, parratt(theta, *result), label='Nelder-Mead Fit')
-#plt.plot(theta,parratt(theta,*initial_guess1),label="Initial Guess")
-plt.legend()
-plt.savefig("../Ressourcen/parratt.pdf")
+for i, ax in enumerate(axes.flatten()):
+    lowest = 4
+    for k in range(200):
+        # Gaussian perturbation
+        perturbed_guess = np.copy(initial_guess1)
+        for j, guess in enumerate(initial_guess1):
+            perturbed_guess[j] = np.random.normal(guess, abs(guess) * 0.01)
+        try:
+            params, _ = curve_fit(parratt, theta, counts, p0=perturbed_guess, maxfev=50000)
+        except:
+            print("lol")
+        errors = counts - parratt(theta, *params)
+        valid_indices = np.logical_and(np.isfinite(errors), ~np.isnan(errors))
+        squared_errors = errors[valid_indices] ** 2
+        mse = np.sum(squared_errors)
+        
+        if mse < lowest and  mse!=0:
+            lowest = mse
+            print(f"{i}: ", end="")
+            for par in perturbed_guess:
+                print(f"{par:.4e}", ",", end="")
+            print("\tms: ", mse)
+            # Plot the curve on the current subplot
+            ax.plot(theta, counts, label="data")
+            ax.plot(theta, parratt(theta, *params), label="fit")
+            ax.set_title(f"Iteration {i+1}")
+            ax.set_xlabel("Theta")
+            ax.set_ylabel("Intensity")
+            ax.grid(True)
+            break  # Exit the while loop when MSE condition is met
+
+plt.tight_layout()
 plt.show()
+# Add legend outside the loop
+plt.legend()
+
+#for res in initial_guess1:
+#    print(f"{res:.4e}",",",end="")
+#print("")
+#plt.plot(_theta,parratt(_theta,*params),label="fit")
+#plt.plot(_theta,parratt(_theta,*initial_guess1),label="initial")
+#plt.plot(theta,counts,label="data")
+#plt.legend()
+plt.savefig("../Ressourcen/parratt.png")
