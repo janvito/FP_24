@@ -114,7 +114,7 @@ mit Elektronenradius $r_0$, Elektronendichte $\rho$, Wellenlänge $\lambda$ und 
 \\\linebreak Besonderheit der Röntgenstrahlung ist, dass für sie jedes Medium geringfügig optisch dünner als das Vakuum erscheint, womit im Gegensatz zu sichtbarem Licht Totalreflexion im Übergang von Vakuum zu Medium auftreten kann.
 Dies tritt gemäß \autoref{eq:snellius}, \ref{eq:n} für Winkel kleiner als
 \begin{align}
-  \alpha_\text{Krit} = \sqrt{2 \delta} = \lambda \sqrt{\frac{\rho r_0}{\pi}}
+  \alpha_\text{Krit} = \sqrt{2 \delta} = \lambda \sqrt{\frac{\rho r_0}{\pi}}\label{eqn:a_krit}
 \end{align}
 auf, da der Cosinus für derart kleine betrachtete Winkel mithilfe seiner Taylorreihe angenährt werden kann.
 Somit gilt die Formel
@@ -130,7 +130,7 @@ Hergeleitet mithilfe der Maxwell-Gleichungen an Grenzschichten ergeben sich für
 mit den z-Komponenten des einfallenden sowie transmittierten Wellenvektors $k_\text{z}=2k\sin{\alpha}$, wobei zwischen parallel und senkrecht zur Einfallsebene polarisierter Strahlung unterschieden wird. Die verwendeten Winkel sind die selben wie oben in \autoref{eq:snellius}.
 Im konkreten Fall der hochfrequenten Röntgenstrahlung mit streifendem Einfall vereinfachen sich die Formeln enorm zu
 \begin{align}
-  r = r_\text{s,p} = \frac{\alpha-\alpha_\text{t}}{\alpha+\alpha_\text{t}}\text{,}
+  r = r_\text{s,p} = \frac{\alpha-\alpha_\text{t}}{\alpha+\alpha_\text{t}}\text{,}\label{eqn:fresnel}
 \end{align}
 wobei auffällt, dass nicht mehr zwischen parallel und senkrecht polarisierter Strahlung unterschieden werden muss.
 Zur Bestimmung der Reflexivität $R=\frac{I_\text{R}}{I_0}=|r|^2$, des Intensitätsverhält-nisses der zwei Strahlen, muss lediglich der zuvor bestimmte Reflexionskoeffizient quadriert werden.
@@ -142,7 +142,7 @@ Im Falle, dass der Anteil der transmittierten Welle anschließend an der Grenze 
   \caption{Querschnitt des Modells einer dünnen Schicht auf einem Substrat,\\ welches an der Grenzfläche ebenfalls reflektiv ist. Der halbe Gangunterschied \\ ist rot hervorgehoben.}\label{fig:3}
 \end{figure}
 Konstruktive Interferenz kann in diesem Fall auftreten, falls der effektive Gangunterschied des eingedrungenen Strahls ein mehrfaches der Wellenlänge der betrachteten Strahlung ist.
-Je nachdem, wie oft der Strahl in der dünnen Schicht zwischen der Grenze von Vakuum und Substrat hin und herläuft, modifiziert sich seine resultierende Intensität mit den verschiedenen reflexions und transmissionskoeffizienten $r$,$t$ der Grenzübergänge.
+Je nachdem, wie oft der Strahl in der dünnen Schicht zwischen der Grenze von Vakuum und Substrat hin und herläuft, modifiziert sich seine resultierende Intensität mit den verschiedenen Reflexions- und Transmissionskoeffizienten $r$,$t$ der Grenzübergänge.
 Durch Nutzung von Relationen welche aus den Fresnelschen Formeln folgen, ergibt sich die Formel
 \begin{align}
   r_\text{ges}= \frac{r_{0\to1}+r_{1\to2}p^2}{1+r_{0\to1}r_{1\to2}p^2}\text{.}\label{eqn:schicht}
@@ -156,7 +156,7 @@ Diese werden Kiessig-Oszillationen genannt und weisen die Periode, den Abstand z
 auf, worüber die Schichtdicke indirekt bestimmt werden kann\cite{kiessig}.
 \subsection{Reflexion und Transmission an Mehrschichtsystemen}\label{subsec:multilevel}
 Die oben genannten physikalischen Prozesse bei Brechung von Röntgenstrahlung an einer Schicht treten, wenn auch weitaus schwierieger zu charakterisieren, ebenfalls bei Mehrschichtigen System wie etwa in \autoref{fig:4} abgebildet auf.
-An jeder Grenzfläche wird der Lichtstrahl sowohl gebrochen und transmittiert als auch reflektiert, beschrieben durch die Intensitätskoeffizienten $I_\text{j}$ und $T_\text{j}$, wobei $\text{j}$ der Index des jeweiligen Grenzübergangs ist.
+An jeder Grenzfläche wird der Lichtstrahl sowohl gebrochen und transmittiert als auch reflektiert, beschrieben durch die Intensitätskoeffizienten $R_\text{j}$ und $T_\text{j}$, wobei $\text{j}$ der Index des jeweiligen Grenzübergangs ist.
 Ausgehend von $R_\text{n+1}$, der Annahmem, dass ins Substrat eingedrungene Licht aufgrund von vollständiger Absorption nicht wieder am Boden reflektiert wird, können die Transmissions- und Reflexionskoeffizienten rekursiv mittels des Parratt-Algorithmus berechnet werden.
 Dies erfolgt mittels der Gleichung
 \begin{align}
@@ -186,17 +186,103 @@ Der transformierte Reflexionskoeffizient
 reicht im gegebenen Kontext als Approximation aus.
 \subsection{Geometriefaktor}
 Der Geometriefaktor $ G $ spielt eine Rolle bei der Berücksichtigung des Einfallswinkels, ab dem der gesamte Strahl die Probenoberfläche erreicht und reflektiert wird. Dieser kritische Einfallswinkel wird als Geometriewinkel $ \alpha_g $ bezeichnet. Wenn der Einfallswinkel $ \alpha_i $ kleiner als der Geometriewinkel ist, wird der Geometriefaktor $ G $ durch die folgende Beziehung definiert:
-\begin{align*}
-G = \frac{D \sin(\alpha_i)}{d_0}
-\end{align*}
+\begin{align}
+G = \frac{D \sin(\alpha_i)}{d_0}\label{eqn:G}
+\end{align}
 Hierbei ist $ D $ der Durchmesser der Probenoberfläche und $ d_0 $ die Höhe des Strahls. Wenn $ \alpha_i $ größer als $ \alpha_g $ ist, wird $ G $ als 1 angenommen.
-
 Wenn $ \alpha_i $ sehr klein ist, überstreicht der Strahl eine größere Fläche als die Probenoberfläche, sodass nicht die gesamte eingestrahlte Intensität von der Probenoberfläche reflektiert wird, die in den Detektor gelangen kann. Dies führt zu einem Rückgang der Reflektivität im Bereich sehr kleiner Winkel $ \alpha_i < \alpha_g $. Der Geometriefaktor $ G $ berücksichtigt diesen Effekt und wird als Verhältnis der Strahlbreite $ D \sin(\alpha_i) $, die die Probenoberfläche erreicht, zur Gesamtstrahlbreite $ d_0 $ definiert.
-\section{Aufbau}{\label{sec:aufbau}}
+\section{Aufbau}
+Das Diffraktometer besteht aus drei Komponenten: der Röntgenquelle (links), dem Probentisch (mittig) und dem Detektor (rechts).
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.12]{Ressourcen/aufbau.png}
+  \caption{Beschrifteter Versuchsaufbau}\label{fig:5}
+\end{figure}
+\subsection{Röntgenquelle}
+In der Röntgenquelle wird ein Elektronenstrahl von 35 mA mit einer Spannung von 40 kV auf eine schräge Kupferanode beschleunigt. Im Kupfer verlieren die Elektronen ihre kinetische Energie durch zufällige Stöße in beliebigen Portionen, was zum kontinuierlichen Spektrum der Bremsstrahlung führt (beschleunigte Ladungen emittieren Photonen). Zusätzlich entstehen materialspezifische Peaks spezieller Energien, die charakteristische Röntgenstrahlung, die durch Ionisation der Kupferatome aus bestimmten Energieniveaus heraus entsteht, wenn die Elektronen von höheren Niveaus nachrutschen. Die charakteristische Röntgenstrahlung $K_{\alpha_1}$ von 8,905 keV wird für diesen Versuch verwendet.
+Die in der Röntgenröhre erzeugte Röntgenstrahlung wird durch Blenden im Raumwinkel eingeschränkt und dann über einen Göbelspiegel frequenz- und winkelabhängig in die gewünschte Richtung parallelisiert. Durch eine weitere Blendenanordnung wird der Strahl weiter eingeschränkt. Der Göbelspiegel besteht aus mehreren dünnen Schichten mit abwechselnden Brechungsindizes, deren Dicke so gewählt wird, dass es für die gewünschte Frequenz nach dem Prinzip der Braggreflexion zu konstruktiver Interferenz kommt. Die parabolische Geometrie unterstützt die Parallelisierung des Strahls. Die in diesem Versuch diskutierten Kiessig-Oszillationen an dünnen Schichten treten auch hier auf, spielen jedoch im Vergleich zur Braggreflexion eine untergeordnete Rolle.
+\subsection{Probentisch}
+Der Probentisch kann mittels Elektromotoren so eingestellt werden, dass die Probe optimal in der Drehachse von Röntgenstrahl und Detektor liegt, wobei dieselbe Stelle der Probe möglichst mittig im Strahl bleibt. Auf dem Probentisch liegt ein quadratisches Stück eines mit einem dünnen Polymerfilm beschichteten Siliziumwafers.
+\subsection{Detektor}
+Der Detektor ermittelt über die Ionisierungswirkung von Röntgenstrahlen die Intensität des einfallenden Röntgenstrahls.
+In diesem Versuch wird die, ausgehend vom Glanzwinkel (größter Winkel mit Totalreflexion), mit steigendem Winkel abnehmende Intensität des reflektierten Strahls gemessen. Hierbei zeigen sich periodische, positive Abweichungen vom grundsätzlich exponentiellen Abfall. Diese Abweichungen sind die sogenannten Kiessig-Oszillationen, die Rückschlüsse auf Rauigkeit und Schichtdicke liefern.
+\section{Durchführung}\label{sec:durchfuehrung}
+\subsection{Justierung des Diffraktometers}
+\subsubsection{Detektorscan}
+Mit einem sogenannten Detektorscan wird ohne Probe der Röntgenstrahl vermessen. Die hierbei ermittelte Intensitätsverteilung entspricht grob einer Gaußkurve, deren Maximum die Mitte des Strahls definiert. Bei uns zeigte sich auf der linken Flanke ein Buckel, der sich durch eine Änderung der Blendenapparatur an der Röntgenquelle deutlich verkleinern ließ. Die Auswertung der gefitteten Gaußkurve und entsprechende Justierung des Diffraktometers erfolgt innerhalb der Software ohne menschliche Interpretation.
+\subsubsection{X-Scan}
+Die Probe wird zunächst in ausreichender Höhe durch einen X-Scan in X-Richtung (Vor und Zurück) durch den Strahl bewegt. Dabei zeigt sich ein Bereich mit Abschattung. In diesem Bereich kann die Probe frei positioniert werden.
+\subsubsection{Z-Scan}
+Über einen Z-Scan wird die Probe in Z-Richtung (Auf und Ab) in und durch den Röntgenstrahl bewegt. Dabei verbleibt die gemessene Intensität zunächst unverändert auf dem Niveau des Detektorscans. Sobald die Probe einen Teil des Röntgenstrahls abschattet, sinkt die Intensität rapide ab, bis der Strahl komplett abgeschirmt wird und der Detektor nur noch Streustrahlung aufzeichnet. Per Augenmaß wird die halbe Abschattung markiert und als erste Näherung der idealen Z-Position gesetzt.
+\subsubsection{Rockingscan}
+Falls die Probe im Strahl geneigt ist, erfolgt ein Teil der Abschattung beim Z-Scan nicht durch die Seitenfläche der Probe, sondern durch die geneigte Oberfläche. Deshalb erfolgt ein sogenannter Rockingscan. Hierbei werden Röntgenquelle und Detektor so gedreht, als würde die Probe gedreht. Der Detektor zeichnet dabei ein Signal auf, das einem Dreieck ähnelt. Ist das Dreieck nicht symmetrisch, so muss die Y-Position nachgestellt werden, bis der Strahl die Probe immer in der Mitte trifft. Liegt die Spitze des Dreiecks nicht auf der Nullposition, so ist die Probe verkippt und die Nullgrad-Position muss angepasst werden. Entsprechende Korrekturwerte müssen ausprobiert werden.
+Da die Korrektur der Verkippung die Probe beim Z-Scan parallel ausrichtet, verschwindet die dadurch verursachte Abweichung von der mittleren Höhe. Es folgt eine weitere Runde Z-Scan und Rockingscan, diesmal mit größerer Genauigkeit.
+\subsection{Messvorgang des Polymerfilms}
+Der Messvorgang beginnt mit einem Reflektivitätsscan, bei dem der Einfallswinkel $\alpha_i$ und der Detektorwinkel $\alpha_f$ gleich sind. Der Scanbereich reicht von 0° bis 2,5°, mit Schrittweiten von 0,005° und einer Messzeit von mindestens 5 Sekunden pro Messpunkt.
+Ein „Diffuser Scan“ wird durchgeführt, um den Anteil der gestreuten Intensität zu bestimmen, wobei der Detektorwinkel um 0,1° gegenüber dem Einfallswinkel verschoben wird. Die Messergebnisse werden im .raw-Format gespeichert, mit dem Programm „File Exchange“ in .uxd umgewandelt und auf einem USB-Stick gesichert.
 
-\section{Durchführung}{\label{sec:durchfuehrung}}
 \section{Auswertung}\label{sec:auswertung}
-
+\subsection{Fehler und Messunsicherheiten}\label{subsec:fehler-und-messunsicherheiten}
+Jegliche Fehlerfortpflanzungen und Berechnungen mit Messunsicherheiten finden durch das Python-Package Uncertainties\cite{uncertainties} statt.
+Somit werden einmal alle bekannten Variablen einmal mit einer speziellen Funktion aus Uncertainties festgelegt.
+Bei allen nachfolgenden Berechnungen erfolgen die benötigten Fortpflanzungen durch Uncertainties automatisch.
+Die Formel für die Fehlerfortpflanzung ist
+\begin{align}
+  \Delta y=\sum_{i=1}^n\left|\frac{\delta f\left(x_1, \ldots, x_n\right)}{\delta x_i}\right| \Delta x_i.\text{.}\label{gauss}
+\end{align}
+und die Formel für den Mittelwert/ das arithmetische Mittel ist
+\begin{align}
+  \bar{x}=\frac{1}{n}\sum_{i=1}^n x_i\label{mittel}
+\end{align}
+Wie die Ableitungen bestimmt werden ist in der \href{https://readthedocs.org/projects/uncertainties-python-package/downloads/pdf/latest/}{Technischen Dokumentation} selbst nachzulesen.
+\subsection{Bestimmung der Halbwertsbreite und der maximalen Intensität}
+Zur Analyse des Detektorscans wurde eine Gaußfunktion der Form
+\begin{align*}
+I(\theta) = I_{\text{max}} \exp \left( -\frac{(\theta - \theta_0)^2}{2\sigma^2} \right),
+\end{align*}
+an die experimentellen Daten angepasst wie in \autoref{fig:6} zu sehen ist,wobei $I(\theta)$ die Intensität bei der Position $\theta$, $I_{\text{max}}$ die maximale Intensität, \(\theta_0\) die Position des Intensitätsmaximums und \(\sigma\) die Standardabweichung der Gaußverteilung ist.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5]{Ressourcen/detektor1.pdf}
+  \caption{Messdaten sowie zugehöriger Gaussfit.}\label{fig:6}
+\end{figure}
+\begin{enumerate}
+    \item Zunächst wurden die experimentellen Intensitätsdaten gegen die Position \(\theta\) geplottet.
+    \item Anschließend wurde die Gaußfunktion mittels der SciPy Funktion $\text{curve\_fit}$ an die Daten angepasst\cite{scipy}. Dies wurde mit Hilfe der Methode der kleinsten Quadrate durchgeführt, um die Parameter \(I_{\text{max}}\), \(\alpha_0\) und \(\sigma\) zu bestimmen.
+    \item Die maximale Intensität \(I_{\text{max}}\) wurde direkt aus der Anpassung erhalten.
+    \item Die Halbwertsbreite (Full Width at Half Maximum, FWHM) der Gaußfunktion wurde durch die Beziehung zwischen der Halbwertsbreite und der Standardabweichung \(\sigma\) berechnet. Für eine Gaußfunktion gilt:
+    \begin{align*}
+    \text{FWHM} = 2 \sqrt{2 \ln 2} \, \sigma \approx 2.355 \, \sigma.
+    \end{align*}
+\end{enumerate}
+Infolge des beschriebenen Verfahrens ergibt sich die Maximale Intensität 
+\begin{align*}
+  I_{\text{max}} = 445506\text{ Counts},
+\end{align*}
+sowie die Halbwertsbreite
+\begin{align*}
+  \text{FWHM} = \SI{0.086(0.002)}{\degree}\text{.}
+\end{align*}
+\subsection{Probenscan und Ideale Fresnelreflektivität}
+Nach Datenaufnahme des Proben- sowie Diffusen Scans gemäß \autoref{sec:durchfuehrung} kann die Hintergrundintensität bereinigt werden, indem die Scans voneinander abgezogen werden.
+Durch Bestimmung der Strahlbreite $d_0$ und der Probenlänge $D$ kann Geometriefaktors $G$
+und der Geometriewinkel
+\begin{align*}
+  \alpha_g=\arcsin\left(\frac{d_0}{D}\right) \cdot \frac{360}{2 \pi}=\SI{0.458(0.062)}{\degree}
+\end{align*}
+entsprechend \autoref{eqn:G} berechnet werden.
+Ebenso kann der kritische Winkel $\alpha_\text{c}$ entsprechend \autoref{eqn:a_krit} und der theoretischen Dispersion $\delta$, welcher der Anleitung entnommen wurde, zu
+\begin{align*}
+  \alpha_c=\SI{0.223}{\degree}
+\end{align*}
+berechnet werden.
+Sind diese Komponenten alle bekannt, können die gemessene Intensität, die hintergrundbereinigte Intensität, die geometrisch korrigierte Intensität und die Ideale Fresnelintensität entsprechend \autoref{eqn:fresnel} grafisch Dargestellt werden.
+Dies ist in \autoref{fig:7} zu sehen.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.6]{Ressourcen/probe.pdf}
+  \caption{Alle oben genannten Intensitäten, inklusive der Kritischen Winkel für Silizium und Polysterol und der Intensitätspeaks.}\label{fig:7}
+\end{figure}
 \section{Diskussion}\label{sec:diskussion}
 
 \section{Literaturverzeichnis}\label{sec:literaturverzeichnis}
