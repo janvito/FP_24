@@ -12,47 +12,49 @@ plt.rcParams['figure.figsize'] = (10, 8)
 plt.rcParams['font.size'] = 20
 plt.rcParams['lines.linewidth'] = 2
 
-#data1 =  [np.genfromtxt('../Daten/CSV_Output/Rockingscan.csv', delimiter=',', skip_header=1, unpack=True),"Rockingscan1"]
-#data2 =  [np.genfromtxt('../Daten/CSV_Output/Rockingscan2.csv', delimiter=',', skip_header=1, unpack=True),"Rockingscan2"]
-#data3 =  [np.genfromtxt('../Daten/CSV_Output/Rockingscan3.csv', delimiter=',', skip_header=1, unpack=True),"Rockingscan3"]
-#data4 =  [np.genfromtxt('../Daten/CSV_Output/Rockingscan4.csv', delimiter=',', skip_header=1, unpack=True),"Rockingscan4"]
-#data5 =  [np.genfromtxt('../Daten/CSV_Output/Rockingscan5.csv', delimiter=',', skip_header=1, unpack=True),"Rockingscan5"]
-#data6 =  [np.genfromtxt('../Daten/CSV_Output/Rockingscan6_final.csv', delimiter=',', skip_header=1, unpack=True),"Rockingscan6"]
-theta,counts = np.genfromtxt('../Daten/CSV_Output/Rockingscan6_final2.csv', delimiter=',', skip_header=1, unpack=True)
-#data63 = [np.genfromtxt('../Daten/CSV_Output/Rockingscan_2theta03.csv', delimiter=',', skip_header=1, unpack=True),"Rockingscan 2theta03"]
-#data64 = [np.genfromtxt('../Daten/CSV_Output/Rockingscan_2theta05.csv', delimiter=',', skip_header=1, unpack=True),"Rockingscan 2theta05"]
+# Load data
+theta, counts = np.genfromtxt('../Daten/CSV_Output/Rockingscan6_final2.csv', delimiter=',', skip_header=1, unpack=True)
 
+# Plot data
+plt.plot(theta, counts, label="rockingscan")
 
-plt.plot(theta,counts,label="rockingscan")
 # Identify the peaks
-peaks, _ = find_peaks(counts, height=1000)  # Assuming data62 is the data you want to fit
+peaks, _ = find_peaks(counts, height=1000)
 print(peaks)
-# Extract the peak position
-peak_position = counts[peaks]
-print(peak_position)
-# Define a function for the line
+peak_positions = counts[peaks]
+print(peak_positions)
+
+# Define linear function
 def linear_func(x, m, b):
     return m * x + b
-plt.plot(theta[peaks],counts[peaks],"rx")
-# Fit the line to your data
-x_lin = np.linspace(theta[peaks],0.5,1000)
-x_data = theta
-y_data = counts
-fit_params, _ = curve_fit(linear_func, theta[peaks[0]:peaks[0]+10], counts[peaks[0]:peaks[0]+10], p0=[-1, 0])  # Initial guess for parameters: slope = -1, intercept = 0
 
-# Plot the data and the fitted line
-plt.plot(x_data, y_data)
-plt.plot(x_lin, linear_func(x_lin, *fit_params), 'r--', label='Fitted Line')
-plt.legend()
-# Calculate the intersection with y=0
-intersection_x = -fit_params[1] / fit_params[0]
+# Highlight peaks on the plot
+plt.plot(theta[peaks], counts[peaks], "rx")
+
+# Fit the line to the data around the first peak
+x_data = theta[peaks[0]:peaks[0]+11]
+y_data = counts[peaks[0]:peaks[0]+11]
+fit_params, covariance = curve_fit(linear_func, x_data, y_data, p0=[-1, 0])  # Initial guess for parameters: slope = -1, intercept = 0
+errors = np.sqrt(np.diag(covariance))  # Extract standard deviations of fit parameters
+
+# Extract fit parameters with uncertainties
+slope = ufloat(fit_params[0], errors[0])
+intercept = ufloat(fit_params[1], errors[1])
+
+# Calculate the intersection with y=0 with uncertainties
+intersection_x = -intercept / slope
 print("Intersection with y=0:", intersection_x)
 
-# Save the plot
+# Generate data for plotting the fitted line
+x_lin = np.linspace(min(x_data), max(x_data), 1000)
+
+# Plot the data and the fitted line
+plt.plot(x_data, y_data, label="Data around peak")
+plt.plot(x_lin, linear_func(x_lin, *fit_params), 'r--', label='Fitted Line')
 plt.legend()
+plt.xlabel(r'$\theta$ [\si{\degree}]')
+plt.ylabel('Counts')
+
+# Save the plot
 plt.savefig("../Ressourcen/rocking.pdf")
 plt.clf()
-#for data in [data63,data64]:
-#    plt.plot(data[0][0],data[0][1],label=data[1])
-#    plt.legend()
-#plt.savefig("../Ressourcen/rocking2.pdf")

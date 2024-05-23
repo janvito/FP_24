@@ -19,7 +19,7 @@
 \usepackage{csquotes} % Recommended package for biblatex
 \usepackage{hyphenat}
 % SETUP 
-\setlength{\headheight}{14.5pt} % Set headheight to at least 14.5pt
+\setlength{\headheight}{15.059pt} % Set headheight to at least 14.5pt
 \addtolength{\topmargin}{-2.5pt} % Make topmargin smaller to compensate
 \sisetup{
   per-mode=fraction,
@@ -134,7 +134,7 @@ Im konkreten Fall der hochfrequenten Röntgenstrahlung mit streifendem Einfall v
 \end{align}
 wobei auffällt, dass nicht mehr zwischen parallel und senkrecht polarisierter Strahlung unterschieden werden muss.
 Zur Bestimmung der Reflexivität $R=\frac{I_\text{R}}{I_0}=|r|^2$, des Intensitätsverhält-nisses der zwei Strahlen, muss lediglich der zuvor bestimmte Reflexionskoeffizient quadriert werden.
-\subsection{Interferenz an dünnen Schichten}
+\subsection{Interferenz an dünnen Schichten}\label{subsec:interferenz}
 Im Falle, dass der Anteil der transmittierten Welle anschließend an der Grenze zum Substrat reflektiert wird und somit aus der Schicht wieder austreten kann, ist es möglich Interferenz zwischen ursprünglich reflektierter und eingedrungener, am Substrat reflektierter Strahlung zu beobachten. Dies ist in \autoref{fig:3} zu sehen.
 \begin{figure}[H]
   \centering
@@ -265,15 +265,16 @@ sowie die Halbwertsbreite
 \end{align*}
 \subsection{Probenscan und Ideale Fresnelreflektivität}
 Nach Datenaufnahme des Proben- sowie Diffusen Scans gemäß \autoref{sec:durchfuehrung} kann die Hintergrundintensität bereinigt werden, indem die Scans voneinander abgezogen werden.
-Durch Bestimmung der Strahlbreite $d_0$ und der Probenlänge $D$ kann Geometriefaktors $G$
+Durch Bestimmung der Strahlbreite $d_0$ und der Probenlänge $D$ mittels \hyperref[sec:durchfuehrung]{X- und Z-Scan} kann der Geometriefaktor $G$
 und der Geometriewinkel
 \begin{align*}
-  \alpha_g=\arcsin\left(\frac{d_0}{D}\right) \cdot \frac{360}{2 \pi}=\SI{0.458(0.062)}{\degree}
+  \alpha_\text{g, berechnet}=\arcsin\left(\frac{d_0}{D}\right) \cdot \frac{360}{2 \pi}=\SI{0.458(0.062)}{\degree}
 \end{align*}
 entsprechend \autoref{eqn:G} berechnet werden.
-Ebenso kann der kritische Winkel $\alpha_\text{c}$ entsprechend \autoref{eqn:a_krit} und der theoretischen Dispersion $\delta$, welcher der Anleitung entnommen wurde, zu
+Ebenso können die kritischen Winkel von Silizium und Polysterol $\alpha_\text{c,Si}, \alpha_\text{c,Po}$ entsprechend \autoref{eqn:a_krit} und den theoretischen Dispersionen $\delta$, welche der Anleitung entnommen wurden, zu
 \begin{align*}
-  \alpha_c=\SI{0.223}{\degree}
+  \alpha_\text{c,Si}&=\SI{0.223}{\degree}\\
+  \alpha_\text{c,Po}&=\SI{0.151}{\degree}
 \end{align*}
 berechnet werden.
 Sind diese Komponenten alle bekannt, können die gemessene Intensität, die hintergrundbereinigte Intensität, die geometrisch korrigierte Intensität und die Ideale Fresnelintensität entsprechend \autoref{eqn:fresnel} grafisch Dargestellt werden.
@@ -283,6 +284,24 @@ Dies ist in \autoref{fig:7} zu sehen.
   \includegraphics[scale=0.6]{Ressourcen/probe.pdf}
   \caption{Alle oben genannten Intensitäten, inklusive der Kritischen Winkel für Silizium und Polysterol und der Intensitätspeaks.}\label{fig:7}
 \end{figure}
+\subsection{Vergleich des Geometriewinkels}
+Mithilfe eines linearen Fits an die Relevanten Daten nach dem gemessenen Intensitätsmaximum wie in \autoref{fig:8} dargestellt des Probenscans kann der entsprechende Winkel der Intensität $I=0$ als
+\begin{align*}
+  \alpha_\text{g,gemessen}=\SI{0.389(0.011)}{\degree}
+\end{align*}
+bestimmt werden. 
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.6]{Ressourcen/rocking.pdf}
+  \caption{Messdaten und Ausgleichsgerade des Rockingscans.}\label{fig:8}
+\end{figure}
+\subsection{Abschätzung der Schichtdicke}
+Wie in \autoref{subsec:interferenz} beschrieben kann die Schichtdicke zunächst aus den Abständen der Reflexivitätsmaxima abgeschätzt werden.
+Unter Nutzung der in \autoref{fig:7} gekennzeichneten Maxima folgt eine erste Schätzung der Schichtdicke als
+\begin{align*}
+  d_\text{0} = \SI{1.7(0.5)e-09}{\meter}\text{.}
+\end{align*}
+
 \section{Diskussion}\label{sec:diskussion}
 
 \section{Literaturverzeichnis}\label{sec:literaturverzeichnis}

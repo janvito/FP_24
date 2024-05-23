@@ -62,7 +62,9 @@ plt.yscale('log')
 # Load and process data
 a_c_silicium = np.sqrt(2 * delta) * 360 / (2 * np.pi)
 a_c_polysterol = np.sqrt(2 * delta_polysterol) * 360 / (2 * np.pi)
-print("a_c=", a_c_silicium)
+print("a_c,Si=", a_c_silicium)
+print("a_c,Po=", a_c_polysterol)
+
 theta1, counts1 = np.genfromtxt('../Daten/CSV_Output/MessungProbe.csv', delimiter=',', skip_header=1, unpack=True)
 theta2, counts2 = np.genfromtxt('../Daten/CSV_Output/MessungProbeDiffus.csv', delimiter=',', skip_header=1, unpack=True)
 theta1, counts1, theta2, counts2 = theta1[theta1 < 1], counts1[theta1 < 1], theta2[theta1 < 1], counts2[theta1 < 1]
