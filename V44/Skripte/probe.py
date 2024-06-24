@@ -56,7 +56,7 @@ def fresnel2(thetas):
 
 # Prepare for plotting
 plt.xlabel(r"$\theta$ $[\si{\degree}]$")
-plt.ylabel(r"Counts")
+plt.ylabel(r"$X_1=\frac{R_1}{T_1}$")
 plt.yscale('log')
 
 # Load and process data
@@ -97,11 +97,20 @@ for i in range(np.shape(thetaclean)[0]):
 peaks, props = find_peaks(countsG)
 thetapeaks = thetaclean[peaks]
 deltatheta = thetapeaks[1:] - thetapeaks[:-1]
-T_a = np.mean(deltatheta[1:])
-T_s = np.std(deltatheta[1:])
-T_u = ufloat(T_a, T_s)
-layer_thickness = lamda / (2 * T_u)
-print("Schichtdicke= ", layer_thickness)
+
+# Calculate Δq_z
+delta_theta_radians = np.radians(deltatheta)
+lambda_xray = 1.51 * 10**-10  # X-ray wavelength in meters
+delta_qz = (4 * np.pi * np.sin(delta_theta_radians)) / lambda_xray
+
+# Average Δq_z and its uncertainty
+delta_qz_avg = np.mean(delta_qz)
+delta_qz_std = np.std(delta_qz)
+delta_qz_u = ufloat(delta_qz_avg, delta_qz_std)
+
+# Calculate layer thickness using the updated formula
+layer_thickness = 2 * np.pi / delta_qz_u
+print("Layer thickness =", layer_thickness)
 
 # Plot corrected data
 plt.plot(thetaclean, countsclean, color=colors[3], label=r'Bereinigter Scan')
@@ -115,7 +124,6 @@ plt.legend(prop={'size': 16})
 plt.tight_layout()
 plt.savefig("../Ressourcen/probe.pdf")
 plt.clf()
-
 # Save cleaned data to CSV
 cleandata = np.array([thetaclean, countsG])
 cleandata_transposed = cleandata.T

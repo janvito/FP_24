@@ -1,0 +1,179 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{ROEDresden}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=7322b23f253f011743587d4bb8dd71bd}{%
+           family={{Fakultät Physik, Technische Universität Dresden}},
+           familyi={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{7322b23f253f011743587d4bb8dd71bd}
+      \strng{fullhash}{7322b23f253f011743587d4bb8dd71bd}
+      \strng{fullhashraw}{7322b23f253f011743587d4bb8dd71bd}
+      \strng{bibnamehash}{7322b23f253f011743587d4bb8dd71bd}
+      \strng{authorbibnamehash}{7322b23f253f011743587d4bb8dd71bd}
+      \strng{authornamehash}{7322b23f253f011743587d4bb8dd71bd}
+      \strng{authorfullhash}{7322b23f253f011743587d4bb8dd71bd}
+      \strng{authorfullhashraw}{7322b23f253f011743587d4bb8dd71bd}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{\href{https://tu-dresden.de/mn/physik/ressourcen/dateien/studium/lehrveranstaltungen/praktika/pdf/ROE.pdf?lang=de}{Physikalisches Grundpraktikum Versuch ROE}}
+      \field{year}{2019}
+    \endentry
+    \entry{scipy}{article}{}{}
+      \field{sortinit}{h}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature Methods}
+      \field{title}{\href{https://rdcu.be/b08Wh}{SciPy 1.0: Fundamental Algorithms for Scientific Computing in Python}}
+      \field{volume}{17}
+      \field{year}{2020}
+      \field{pages}{261\bibrangedash 272}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1038/s41592-019-0686-2
+      \endverb
+    \endentry
+    \entry{juwi2015}{article}{}{}
+      \field{sortinit}{h}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Junge Wissenschaft PTB}
+      \field{title}{\href{https://www.junge-wissenschaft.ptb.de/fileadmin/paper/bis_2017/pdf/juwi-105-2015-02.pdf}{Charakterisierung kristalliner Metall- und Metalloxidschichten mittels Röntgen-StreuungKristalle unter der Lupe}}
+      \field{volume}{105}
+      \field{year}{2015}
+      \field{pages}{1\bibrangedash 10}
+      \range{pages}{10}
+    \endentry
+    \entry{kiessig}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=cd7d0c8d0137f462e2f367fdb8dd8f88}{%
+           family={Kiessig},
+           familyi={K\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{cd7d0c8d0137f462e2f367fdb8dd8f88}
+      \strng{fullhash}{cd7d0c8d0137f462e2f367fdb8dd8f88}
+      \strng{fullhashraw}{cd7d0c8d0137f462e2f367fdb8dd8f88}
+      \strng{bibnamehash}{cd7d0c8d0137f462e2f367fdb8dd8f88}
+      \strng{authorbibnamehash}{cd7d0c8d0137f462e2f367fdb8dd8f88}
+      \strng{authornamehash}{cd7d0c8d0137f462e2f367fdb8dd8f88}
+      \strng{authorfullhash}{cd7d0c8d0137f462e2f367fdb8dd8f88}
+      \strng{authorfullhashraw}{cd7d0c8d0137f462e2f367fdb8dd8f88}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annalen der Physik}
+      \field{title}{\href{https://doi.org/10.1002/andp.19314020702}{Interferenz von Röntgenstrahlen an dünnen Schichten}}
+      \field{volume}{402}
+      \field{year}{1931}
+      \field{pages}{769\bibrangedash 788}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1002/andp.19314020702
+      \endverb
+    \endentry
+    \entry{uni_giessen}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=202b82792281fe6b65a5307602313cbf}{%
+           family={Kriegseis},
+           familyi={K\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{202b82792281fe6b65a5307602313cbf}
+      \strng{fullhash}{202b82792281fe6b65a5307602313cbf}
+      \strng{fullhashraw}{202b82792281fe6b65a5307602313cbf}
+      \strng{bibnamehash}{202b82792281fe6b65a5307602313cbf}
+      \strng{authorbibnamehash}{202b82792281fe6b65a5307602313cbf}
+      \strng{authornamehash}{202b82792281fe6b65a5307602313cbf}
+      \strng{authorfullhash}{202b82792281fe6b65a5307602313cbf}
+      \strng{authorfullhashraw}{202b82792281fe6b65a5307602313cbf}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{9}
+      \field{month}{7}
+      \field{title}{\href{https://www.uni-giessen.de/de/fbz/fb07/fachgebiete/physik/studium/fprak/anleitungen/reflekto2}{Röntgen-Reflektometrie zur Dünnschichtanalyse}}
+      \field{year}{2023}
+      \field{dateera}{ce}
+    \endentry
+    \entry{uncertainties}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=bc8423f22bfc3f8a948ae1dc5ef5085a}{%
+           family={LEBIGOT},
+           familyi={L\bibinitperiod},
+           given={Eric\bibnamedelima O.},
+           giveni={E\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+      }
+      \strng{namehash}{bc8423f22bfc3f8a948ae1dc5ef5085a}
+      \strng{fullhash}{bc8423f22bfc3f8a948ae1dc5ef5085a}
+      \strng{fullhashraw}{bc8423f22bfc3f8a948ae1dc5ef5085a}
+      \strng{bibnamehash}{bc8423f22bfc3f8a948ae1dc5ef5085a}
+      \strng{authorbibnamehash}{bc8423f22bfc3f8a948ae1dc5ef5085a}
+      \strng{authornamehash}{bc8423f22bfc3f8a948ae1dc5ef5085a}
+      \strng{authorfullhash}{bc8423f22bfc3f8a948ae1dc5ef5085a}
+      \strng{authorfullhashraw}{bc8423f22bfc3f8a948ae1dc5ef5085a}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Uncertainties: a Python package for calculations with uncertainties}
+      \field{version}{3.1.7}
+    \endentry
+    \entry{parratt}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=e973073a26887dad5a61d2c8e3ef3bb2}{%
+           family={Parratt},
+           familyi={P\bibinitperiod},
+           given={L.\bibnamedelimi G.},
+           giveni={L\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \strng{namehash}{e973073a26887dad5a61d2c8e3ef3bb2}
+      \strng{fullhash}{e973073a26887dad5a61d2c8e3ef3bb2}
+      \strng{fullhashraw}{e973073a26887dad5a61d2c8e3ef3bb2}
+      \strng{bibnamehash}{e973073a26887dad5a61d2c8e3ef3bb2}
+      \strng{authorbibnamehash}{e973073a26887dad5a61d2c8e3ef3bb2}
+      \strng{authornamehash}{e973073a26887dad5a61d2c8e3ef3bb2}
+      \strng{authorfullhash}{e973073a26887dad5a61d2c8e3ef3bb2}
+      \strng{authorfullhashraw}{e973073a26887dad5a61d2c8e3ef3bb2}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Phys. Rev.}
+      \field{month}{7}
+      \field{title}{\href{https://journals.aps.org/pr/abstract/10.1103/PhysRev.95.359}{Surface Studies of Solids by Total Reflection of X-Rays}}
+      \field{volume}{95}
+      \field{year}{1954}
+      \field{pages}{359\bibrangedash 369}
+      \range{pages}{11}
+    \endentry
+  \enddatalist
+  \missing{ekabs}
+\endrefsection
+\endinput
+

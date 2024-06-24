@@ -18,14 +18,20 @@
 \usepackage{booktabs} % Tabellen
 \usepackage{csquotes} % Recommended package for biblatex
 \usepackage{hyphenat}
+\usepackage{listings} % for typesetting code
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
 % SETUP 
 \setlength{\headheight}{15.059pt} % Set headheight to at least 14.5pt
 \addtolength{\topmargin}{-2.5pt} % Make topmargin smaller to compensate
 \sisetup{
+  output-decimal-marker={,},
   per-mode=fraction,
   fraction-function=\tfrac,
   separate-uncertainty=true
 }
+
 \addbibresource{Ressourcen/V44.bib}
 \geometry{ %A4
   a4paper,
@@ -43,7 +49,12 @@
 % COMMANDS
 \newcommand{\uproman}[1]{\uppercase\expandafter{\romannumeral#1}} % Römische Zahlen
 
-
+\sisetup{
+  per-mode=fraction,
+  fraction-function=\tfrac,
+  separate-uncertainty=true,
+  output-decimal-marker={,}
+}
 % DOC
 \begin{document}
 
@@ -69,13 +80,13 @@
 \newpage
 
 \section{Zielsetzung}\label{sec:zielsetzung}
-Ziel dieses Versuchs ist es, verschiedene physikalische bzw. geometrische Eigenschaften wie Elektronendichte, Schichtdicke oder Rauigkeit eines Polysterolfilms auf einem Siliziumwafer mittels der Röntgen-reflektometrie zu bestimmen.
+Ziel dieses Versuchs ist es, verschiedene physikalische bzw. geometrische Eigenschaften wie Elektronendichte, Schichtdicke oder Rauigkeit eines Polysterolfilms auf einem Siliziumwafer mittels der Röntgenreflektometrie zu bestimmen.
 Die Untersuchung/ Kontrolle solcher Schichten im Nanometerbereich ist insbesondere innerhalb der Halbleiterelektronik von Bedeutung und besitzt eine hohe Relevanz für die Industrie.
-Durch Analyse des Resultierenden Streubildes unter Verwendung problemangepasster Algorithmen können charakteristische Strukturinformationen der Probe gewonnen werden.
+Durch Analyse des resultierenden Streubildes unter Verwendung problemangepasster Algorithmen können charakteristische Strukturinformationen der Probe gewonnen werden.
 \section{Theorie}\label{sec:theorie}
 Als Grundlage für eine effiziente Auswertung der Daten müssen zunächst einige wichtige physikalische Phänomene bzw. Modelle erläutert werden.
 \subsection{Röntgenstrahlung}\label{subsec:röntgen}
-Aufgrund ihrer relativ zum sichtbaren Licht vergleichsweise kleine Wellenlänge 
+Aufgrund ihrer relativ zum sichtbaren Licht vergleichsweise kleinen Wellenlänge 
 \begin{align*}
   \lambda_{\text{Röntgen}} < \SI{10}{\nano\meter} < \SI{400}{\nano\meter} <\lambda_\text{Sichtbar}
 \end{align*}
@@ -90,7 +101,7 @@ Hierbei ist zwischen Bremsstrahlung und dem charakteristischen Röntgenspektrum 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.5]{Ressourcen/Röntgenspektrum.png}
-  \caption{Schematisches Emissionsspektrum einer Kupferanode, wie auch\\in diesem Versuch verwendet.\cite{ROEDresden}}\label{fig:1}
+  \caption{Schematisches Emissionsspektrum einer Kupferanode, wie auch\\in diesem Versuch verwendet\cite{ROEDresden}.}\label{fig:1}
 \end{figure}
 \subsubsection{Eigenschaften von Röntgenstrahlung}
 Die in diesem Versuch relevanteste Frequenz ist die sog. $\text{K}_\alpha$-Linie, welche einem Übergang eines Elektrons von der zweiten(M) in die erste(K) Schale und der Wellenlänge $\lambda_{\text{K}_\alpha}=\SI{0.1514}{\nano\meter}$ entspricht\cite{ekabs}.
@@ -143,7 +154,7 @@ Im Falle, dass der Anteil der transmittierten Welle anschließend an der Grenze 
 \end{figure}
 Konstruktive Interferenz kann in diesem Fall auftreten, falls der effektive Gangunterschied des eingedrungenen Strahls ein mehrfaches der Wellenlänge der betrachteten Strahlung ist.
 Je nachdem, wie oft der Strahl in der dünnen Schicht zwischen der Grenze von Vakuum und Substrat hin und herläuft, modifiziert sich seine resultierende Intensität mit den verschiedenen Reflexions- und Transmissionskoeffizienten $r$,$t$ der Grenzübergänge.
-Durch Nutzung von Relationen welche aus den Fresnelschen Formeln folgen, ergibt sich die Formel
+Durch Nutzung von Relationen, welche aus den Fresnelschen Formeln folgen, ergibt sich die Formel
 \begin{align}
   r_\text{ges}= \frac{r_{0\to1}+r_{1\to2}p^2}{1+r_{0\to1}r_{1\to2}p^2}\text{.}\label{eqn:schicht}
 \end{align}
@@ -151,13 +162,17 @@ Die Indizes der Reflexionskoeffizienten geben an, zwischen welchen unterschiedli
 Wie bereits aus der Formel ersichtlich, treten für die Reflexivität $R_\text{ges}=|r_\text{ges}|^2$ Oszillationen auf.
 Diese werden Kiessig-Oszillationen genannt und weisen die Periode, den Abstand zwischen zwei Maxima 
 \begin{align}
-  T_\alpha = \frac{\lambda}{2d}
+  \Delta q_z = \frac{4\pi \sin(\Delta \theta)}{\lambda}
 \end{align}
-auf, worüber die Schichtdicke indirekt bestimmt werden kann\cite{kiessig}.
+auf, worüber die Schichtdicke indirekt bestimmt werden kann\cite{kiessig}:
+\begin{align}
+  d = \frac{2\pi}{\Delta q_z}\text{.}
+\end{align}
+
 \subsection{Reflexion und Transmission an Mehrschichtsystemen}\label{subsec:multilevel}
 Die oben genannten physikalischen Prozesse bei Brechung von Röntgenstrahlung an einer Schicht treten, wenn auch weitaus schwierieger zu charakterisieren, ebenfalls bei Mehrschichtigen System wie etwa in \autoref{fig:4} abgebildet auf.
 An jeder Grenzfläche wird der Lichtstrahl sowohl gebrochen und transmittiert als auch reflektiert, beschrieben durch die Intensitätskoeffizienten $R_\text{j}$ und $T_\text{j}$, wobei $\text{j}$ der Index des jeweiligen Grenzübergangs ist.
-Ausgehend von $R_\text{n+1}$, der Annahmem, dass ins Substrat eingedrungene Licht aufgrund von vollständiger Absorption nicht wieder am Boden reflektiert wird, können die Transmissions- und Reflexionskoeffizienten rekursiv mittels des Parratt-Algorithmus berechnet werden.
+Ausgehend von $R_\text{n+1}$, der Annahmem, dass ins Substrat eingedrungene Licht aufgrund von vollständiger Absorption nicht wieder am Boden reflektiert wird, können die Transmissions- und Reflexionskoeffizienten rekursiv mittels des Parratt-Algorithmus berechnet werden.\cite{parratt}
 Dies erfolgt mittels der Gleichung
 \begin{align}
   X_\text{j} = e^{-2ik_\text{z,j}z_\text{j}}\frac{r_\text{j,j+1}+X_\text{j+1}e^{2ik_\text{z,j+1}z_\text{j}}}{1+r_\text{j,j+1}X_\text{j+1}e^{2ik_\text{z,j+1}z_\text{j}}}
@@ -169,15 +184,15 @@ inklusive der Reflexionskoeffizienten
 und den Wellenvektorkomponenten
 \begin{align}
   k_\text{z,j}&=\frac{2\pi}{\lambda}\sin{\alpha}\\
-  k_\text{z,j+1}&=\frac{2\pi}{\lambda}\sqrt{n^2-cos^2{\alpha}}\text{.}
+  k_\text{z,j+1}&=\frac{2\pi}{\lambda}\sqrt{n_\text{j+1}^2-cos^2{\alpha}}\text{.}
 \end{align}
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.12]{Ressourcen/mehrschicht.png}
-  \caption{Skizzierung eines n-schichtigen Systems, mit n individuellen\\ Grenzflächen und Brechungsindizes\cite{juwi2015}}\label{fig:4}
+  \caption{Skizzierung eines n-schichtigen Systems, mit n individuellen\\ Grenzflächen und Brechungsindizes\cite{juwi2015}.}\label{fig:4}
 \end{figure}
 \subsection{Rauigkeit}{\label{subsec:rauigkeit}}
-Um die unebenheit der untersuchten Probe zu berücksichtigen, müssen einige Korrekturen eingeführt werden.
+Um die Unebenheit der untersuchten Probe zu berücksichtigen, müssen einige Korrekturen eingeführt werden.
 Mit der Annahme, dass die mittlere Abweichung von der durchschnittlichen Schichthöhe $\sigma$ weitaus kleiner als die Schichtdicke ist, kann die Unebenheit der Oberfläche annähernd Gaußverteilt beschrieben werden.
 Der transformierte Reflexionskoeffizient
 \begin{align}
@@ -207,9 +222,10 @@ Der Probentisch kann mittels Elektromotoren so eingestellt werden, dass die Prob
 Der Detektor ermittelt über die Ionisierungswirkung von Röntgenstrahlen die Intensität des einfallenden Röntgenstrahls.
 In diesem Versuch wird die, ausgehend vom Glanzwinkel (größter Winkel mit Totalreflexion), mit steigendem Winkel abnehmende Intensität des reflektierten Strahls gemessen. Hierbei zeigen sich periodische, positive Abweichungen vom grundsätzlich exponentiellen Abfall. Diese Abweichungen sind die sogenannten Kiessig-Oszillationen, die Rückschlüsse auf Rauigkeit und Schichtdicke liefern.
 \section{Durchführung}\label{sec:durchfuehrung}
+Die Versuchsdurchführung kann grob in zwei Teile gespalten werden, den Justagevorgang sowie den letzendlichen Messvorgang, welcher mit weitaus höherer Präzision durchgeführt wird.
 \subsection{Justierung des Diffraktometers}
 \subsubsection{Detektorscan}
-Mit einem sogenannten Detektorscan wird ohne Probe der Röntgenstrahl vermessen. Die hierbei ermittelte Intensitätsverteilung entspricht grob einer Gaußkurve, deren Maximum die Mitte des Strahls definiert. Bei uns zeigte sich auf der linken Flanke ein Buckel, der sich durch eine Änderung der Blendenapparatur an der Röntgenquelle deutlich verkleinern ließ. Die Auswertung der gefitteten Gaußkurve und entsprechende Justierung des Diffraktometers erfolgt innerhalb der Software ohne menschliche Interpretation.
+Mit einem sogenannten Detektorscan wird sichergestellt, dass Röhre und Detektor tatsächlich auf einer Ebene stehen. Die hierbei ermittelte Intensitätsverteilung entspricht grob einer Gaußkurve, deren Maximum die Mitte des Strahls definiert. Bei uns zeigte sich auf der linken Flanke ein Buckel, der sich durch eine Änderung der Blendenapparatur an der Röntgenquelle deutlich verkleinern ließ. Die Auswertung der gefitteten Gaußkurve und entsprechende Justierung des Diffraktometers erfolgt innerhalb der Software ohne menschliche Interpretation.
 \subsubsection{X-Scan}
 Die Probe wird zunächst in ausreichender Höhe durch einen X-Scan in X-Richtung (Vor und Zurück) durch den Strahl bewegt. Dabei zeigt sich ein Bereich mit Abschattung. In diesem Bereich kann die Probe frei positioniert werden.
 \subsubsection{Z-Scan}
@@ -246,15 +262,10 @@ an die experimentellen Daten angepasst wie in \autoref{fig:6} zu sehen ist,wobei
   \includegraphics[scale=0.5]{Ressourcen/detektor1.pdf}
   \caption{Messdaten sowie zugehöriger Gaussfit.}\label{fig:6}
 \end{figure}
-\begin{enumerate}
-    \item Zunächst wurden die experimentellen Intensitätsdaten gegen die Position \(\theta\) geplottet.
-    \item Anschließend wurde die Gaußfunktion mittels der SciPy Funktion $\text{curve\_fit}$ an die Daten angepasst\cite{scipy}. Dies wurde mit Hilfe der Methode der kleinsten Quadrate durchgeführt, um die Parameter \(I_{\text{max}}\), \(\alpha_0\) und \(\sigma\) zu bestimmen.
-    \item Die maximale Intensität \(I_{\text{max}}\) wurde direkt aus der Anpassung erhalten.
-    \item Die Halbwertsbreite (Full Width at Half Maximum, FWHM) der Gaußfunktion wurde durch die Beziehung zwischen der Halbwertsbreite und der Standardabweichung \(\sigma\) berechnet. Für eine Gaußfunktion gilt:
-    \begin{align*}
-    \text{FWHM} = 2 \sqrt{2 \ln 2} \, \sigma \approx 2.355 \, \sigma.
-    \end{align*}
-\end{enumerate}
+Zunächst wurden die experimentellen Intensitätsdaten gegen die Position \(\theta\) geplottet. Anschließend wurde die Gaußfunktion mittels der SciPy Funktion $\text{curve\_fit}$ an die Daten angepasst \cite{scipy}. Dies wurde mit Hilfe der Methode der kleinsten Quadrate durchgeführt, um die Parameter \(I_{\text{max}}\), \(\alpha_0\) und \(\sigma\) zu bestimmen. Die maximale Intensität \(I_{\text{max}}\) wurde direkt aus der Anpassung erhalten. Die Halbwertsbreite (Full Width at Half Maximum, FWHM) der Gaußfunktion wurde durch die Beziehung zwischen der Halbwertsbreite und der Standardabweichung \(\sigma\) berechnet. Für eine Gaußfunktion gilt:
+\begin{align*}
+\text{FWHM} = 2 \sqrt{2 \ln 2} \, \sigma \approx \num{2.355} \, \sigma.
+\end{align*}
 Infolge des beschriebenen Verfahrens ergibt sich die Maximale Intensität 
 \begin{align*}
   I_{\text{max}} = 445506\text{ Counts},
@@ -265,20 +276,29 @@ sowie die Halbwertsbreite
 \end{align*}
 \subsection{Probenscan und Ideale Fresnelreflektivität}
 Nach Datenaufnahme des Proben- sowie Diffusen Scans gemäß \autoref{sec:durchfuehrung} kann die Hintergrundintensität bereinigt werden, indem die Scans voneinander abgezogen werden.
-Durch Bestimmung der Strahlbreite $d_0$ und der Probenlänge $D$ mittels \hyperref[sec:durchfuehrung]{X- und Z-Scan} kann der Geometriefaktor $G$
+Durch Bestimmung der Strahlbreite $d_0=\SI{0.16(0.02)}{\milli\meter}$ und der Probenlänge $D=\SI{20(0.5)}{\milli\meter}$ mittels \hyperref[sec:durchfuehrung]{X- und Z-Scan} kann der Geometriefaktor $G$
 und der Geometriewinkel
 \begin{align*}
   \alpha_\text{g, berechnet}=\arcsin\left(\frac{d_0}{D}\right) \cdot \frac{360}{2 \pi}=\SI{0.458(0.062)}{\degree}
 \end{align*}
-entsprechend \autoref{eqn:G} berechnet werden.
+entsprechend \autoref{eqn:G} berechnet werden. Die konkreten Plots der X- und Z-Scans sind in den \hyperref[fig:x]{Abbildungen 7} und \hyperref[fig:x]{8} zu sehen.
 Ebenso können die kritischen Winkel von Silizium und Polysterol $\alpha_\text{c,Si}, \alpha_\text{c,Po}$ entsprechend \autoref{eqn:a_krit} und den theoretischen Dispersionen $\delta$, welche der Anleitung entnommen wurden, zu
 \begin{align*}
   \alpha_\text{c,Si}&=\SI{0.223}{\degree}\\
   \alpha_\text{c,Po}&=\SI{0.151}{\degree}
 \end{align*}
-berechnet werden.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5]{Ressourcen/xscan.pdf}
+  \caption{X-Scan der Probe, mit eingezeichneten Linien zur Bestimmung der Probengröße.}\label{fig:x}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5]{Ressourcen/zscan.pdf}
+  \caption{X-Scan der Probe, mit eingezeichneten Linien zur Bestimmung der Strahlbreite.}\label{fig:z}
+\end{figure}
 Sind diese Komponenten alle bekannt, können die gemessene Intensität, die hintergrundbereinigte Intensität, die geometrisch korrigierte Intensität und die Ideale Fresnelintensität entsprechend \autoref{eqn:fresnel} grafisch Dargestellt werden.
-Dies ist in \autoref{fig:7} zu sehen.
+Dies ist in \autoref{fig:4} zu sehen.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.6]{Ressourcen/probe.pdf}
@@ -292,22 +312,147 @@ Mithilfe eines linearen Fits an die Relevanten Daten nach dem gemessenen Intensi
 bestimmt werden. 
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=0.6]{Ressourcen/rocking.pdf}
+  \includegraphics[scale=0.5]{Ressourcen/rocking.pdf}
   \caption{Messdaten und Ausgleichsgerade des Rockingscans.}\label{fig:8}
 \end{figure}
 \subsection{Abschätzung der Schichtdicke}
 Wie in \autoref{subsec:interferenz} beschrieben kann die Schichtdicke zunächst aus den Abständen der Reflexivitätsmaxima abgeschätzt werden.
 Unter Nutzung der in \autoref{fig:7} gekennzeichneten Maxima folgt eine erste Schätzung der Schichtdicke als
 \begin{align*}
-  d_\text{0} = \SI{1.7(0.5)e-09}{\meter}\text{.}
+  d_\text{0} = \SI{1.02(0.34)e-07}{\meter}\text{.}
 \end{align*}
-
+\subsection{Parratt-Algorithmus und Dispersionsbestimmung}
+Durch Implementierung des Parratt-Algorithmus innerhalb von Python und einer aufwändigen Bestimmung der Parameter mit einer Kombination aus manueller und maschinengesteuerter Optimierung können die in \autoref{fig:9} und \autoref{fig:10} abgebildeten Plots generiert werden, wobei sich nach bestmöglicher Anpassung der Funktion an die Daten die Werte
+\begin{align*}
+  \delta_\text{Si}  &=\num{7.7}\cdot10^{-06}\\
+  \delta_\text{Po}  &=\num{8.0}\cdot10^{-06}\\
+  \sigma_\text{Si}  &=\num{1.78}\cdot10^{-09}\\
+  \sigma_\text{Po}  &=\num{3.48}\cdot10^{-10}\\
+  \beta_\text{Si}   &=\num{3.21}\cdot10^{-07}\\
+  \beta_\text{Po}   &=\num{6.38}\cdot10^{-09}\\
+  d_1               &=\num{8.2}\cdot10^{-07}\si{\meter}
+\end{align*}
+ergeben.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5]{Ressourcen/parratt6.png}
+  \caption{Parratt-Algorithmus speziell für die ersten zwei Oszillationen.}\label{fig:9}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5]{Ressourcen/parrattf.png}
+  \caption{Parratt-Algorithmus für den vollständigen Winkelbereich.}\label{fig:10}
+\end{figure}
+\subsection{Kritischer Winkel}
+Mithilfe der bestimmten Parameters $\delta_\text{Si},\delta_\text{Po}$ und \autoref{eqn:a_krit} lassen sich der Kritische Winkel für Silizium und Polysterol als
+\begin{align*}
+  \alpha_\text{c,Si}&=\SI{0.226}{\degree}\\
+  \alpha_\text{c,Po}&=\SI{0.229}{\degree}
+\end{align*}
+berechnen, wobei $\alpha_\text{c,Si}$ ebenfalls in \autoref{fig:9} zu sehen ist, fast identisch mit dem gemessenen Kritischen Winkel.
 \section{Diskussion}\label{sec:diskussion}
+Die Abweichungen des Geometriewinkels, wenn auch vergleichsweise klein, könnten aus den zu ungenau gehaltenen X- bzw. Z-Scans oder aus einem Fehler bei der Justage der Messgeräte stammen.
+\begin{table}[H]
+  \centering
+  \renewcommand{\arraystretch}{1.5} % Adjust vertical spacing
+  \caption{Vergleich des berechneten und gemessenen Geometriewinkels inklusive Abweichung.}
+  \begin{tabular}{c|c|c}
+    \hline
+    $\alpha_\text{g, berechnet}$ & $\alpha_\text{g, gemessen}$ & $\Delta\alpha_\text{g}$ \\
+    \hline
+    $\SI{0.458(0.062)}{\degree}$ & $\SI{0.389(0.011)}{\degree}$ &  $(\num{15.07} \pm \num{11.75})\%$ \\
+  \end{tabular}
+  \label{tab:geometriewinkel}
+\end{table}
+Jegliche Abweichungen bezüglich der Disperionen von Silizium und Polysterol lassen sich auf die fehleranfällige Anwendung des Parratt-Algorithmus zurückführen.
+Die manuelle Anpassung von Parametern an Messdaten kann nur bedingt genau erfolgen, jedoch war sie in diesem Fall die einzige Möglichkeit, um Computerbedingte Probleme wie "$\text{Overfitting}$" $\text{ und/oder}$ lokale Parameterraum-Minima zu umgehen.
+\begin{table}[H]
+  \centering
+  \renewcommand{\arraystretch}{1.5} % Adjust vertical spacing
+  \begin{tabular}{c|c|c|c}
+    \hline
+    Parameter & Bestimmt & Theoretisch & Abweichung \\
+    \hline
+    $\delta_\text{Si}$ &  $\num{7.7} \times 10^{-6}$ &    $\num{7.6}\times 10^{-6}$  &     $\num{1.3}\%$ \\
+    $\delta_\text{Po}$ &  $\num{8.0} \times 10^{-6}$ &    $\num{3.5}\times 10^{-6}$  &     $\num{46.9}\%$ \\
+    $\beta_\text{Si}$ &   $\num{3.21}  \times 10^{-7}$ &  $\num{1.04}\times 10^{-7}$ &   $\num{67.6}\%$ \\
+    $\beta_\text{Po}$ &   $\num{6.32}  \times 10^{-9}$ &  $\num{4.82}\times 10^{-9}$ &   $\num{20.7}\%$ \\
+    \hline
+  \end{tabular}
+  \caption{Abweichungen der experimentell bestimmten Dispersion von den Theoriewerten.}
+  \label{tab:parameter}
+\end{table}
+Selbes gilt für den per Parratt-Algorithmus bestimmten Wert für die Schichtdicke. Andererseits kann die Abweichung auch daher rühren, dass erst durch den Parratt-Algorithmus die Komplexität des Mehrschichtsystems berücksichtigt wurde, 
+\begin{table}[H]
+  \centering
+  \renewcommand{\arraystretch}{1.5} % Adjust vertical spacing
+  \caption{Vergleich der zwei Werte für die Schichtdicke.}
+  \begin{tabular}{c|c|c}
+    \hline
+    $d_0$ & $d_1$ & $\Delta d$ \\
+    \hline
+    $1.02(0.34)\times 10^{-7}\si{\meter}$ & $\SI{8.2e-07}{\meter}$ & $(\num{87.9}\pm\num{23.7})\%$  \\
+  \end{tabular}
+  \label{tab:schichtdicke}
+\end{table}
+Da sich der Kritische Winkel aus den Größen $\delta$ berechnet, ist der Vergleich zum Theoriewert hier redundant.
+Im Hinblick auf \autoref{fig:9} ist jedoch zu erkennen, dass der per Parratt-Algorithmus bestimmte Wert sich mit der "Kante" vor Abfall der Intensität deckt.
+\\\\
+Allgemein lässt sich sagen, dass aufgrund der schwierigen und fehleranfälligen Implementierung der Parratt-Algorithmus viele neue Fehlerquellen entstehen, dennoch liefert dieser akzeptable Ergebnisse.
 
 \section{Literaturverzeichnis}\label{sec:literaturverzeichnis}
 \printbibliography[heading = none]
 \newpage
 
 \section{Anhang}\label{sec:anhang}
+\begin{lstlisting}[language=Python, caption={Parratt Implementation}, label={lst:python_code}, basicstyle=\footnotesize]  import numpy as np
+  import matplotlib.pyplot as plt
+  from scipy.optimize import curve_fit
+  import random
+  
+  # Enable LaTeX rendering in Matplotlib
+  plt.rc('text', usetex=True)
+  plt.rc('text.latex', preamble=r'\usepackage{siunitx}')
+  plt.rc('font', family='serif')
+  plt.rcParams['figure.figsize'] = (10, 8)
+  plt.rcParams['font.size'] = 20
+  plt.rcParams['lines.linewidth'] = 2
+  
+  plt.xlabel(r"$\theta$ $[\si{\degree}]$")
+  plt.ylabel(r"$X_1=\frac{R_1}{T_1}$")
+  plt.yscale("log")
+  
+  def parratt(a_i, del2, del3, sig1, sig2, b2, b3, d2):
+      a_irad = np.deg2rad(a_i)
+      k = 2 * np.pi / lamda
+  
+      n2 = 1 - del2 - b2 * 1j
+      n3 = 1 - del3 - b3 * 1j
+  
+      kz1 = k * np.sqrt(1 - np.cos(a_irad) ** 2)
+      kz2 = k * np.sqrt(n2 ** 2 - np.cos(a_irad) ** 2)
+      kz3 = k * np.sqrt(n3 ** 2 - np.cos(a_irad) ** 2)
+  
+      rauigkeit1 = np.exp(-2 * kz1 * kz2 * sig1 ** 2)
+      rauigkeit2 = np.exp(-2 * kz2 * kz3 * sig2 ** 2)
+  
+      r12 = (kz1 - kz2) / (kz1 + kz2) * rauigkeit1
+      r23 = (kz2 - kz3) / (kz2 + kz3) * rauigkeit2
+  
+      x2 = np.exp(-2j * kz2 * d2) * r23
+      x1 = (r12 + x2) / (1 + r12 * x2)
+  
+      return np.abs(x1) ** 2
+  
+  theta, counts = np.genfromtxt('../Daten/CSV/probenscan_clean.csv', delimiter=',', unpack=True)
+  theta, counts = theta[15:67], counts[15:67]
+  lamda = 1.54 * 10**(-10)
+  
+  plt.axvline(np.sqrt(2*7.809387428660141e-06)*360/(2*np.pi),color="red",label=r"Bestimmter kritischer Winkel von Silizium")
+  plt.plot(theta,np.exp(counts),"k.",label=r"Messdaten")  plt.plot(theta,np.exp(parratt(theta,7.809387428660141e-06 ,6.462924555141031e-06 ,2.084494881704885e-09 ,8.274921568775992e-10 ,1.807969456700064e-07 ,9.084631342956966e-08 ,4.876432802470713e-08)),label=r"Parratt-Reflektivitaet")
 
+  plt.legend(loc="best")
+  plt.tight_layout()
+  plt.savefig("../Ressourcen/parratt.png")
+  \end{lstlisting}
 \end{document}

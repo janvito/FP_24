@@ -1,0 +1,119 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{anleitung}{manual}{}{}
+      \name{author}{1}{}{%
+        {{hash=ad600a56b0ce23fc84b3c2d71665eb9d}{%
+           family={Fakultät\bibnamedelima Physik},
+           familyi={F\bibinitperiod\bibinitdelim P\bibinitperiod},
+           given={TU\bibnamedelima Dortmund},
+           giveni={T\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \strng{namehash}{ad600a56b0ce23fc84b3c2d71665eb9d}
+      \strng{fullhash}{ad600a56b0ce23fc84b3c2d71665eb9d}
+      \strng{fullhashraw}{ad600a56b0ce23fc84b3c2d71665eb9d}
+      \strng{bibnamehash}{ad600a56b0ce23fc84b3c2d71665eb9d}
+      \strng{authorbibnamehash}{ad600a56b0ce23fc84b3c2d71665eb9d}
+      \strng{authornamehash}{ad600a56b0ce23fc84b3c2d71665eb9d}
+      \strng{authorfullhash}{ad600a56b0ce23fc84b3c2d71665eb9d}
+      \strng{authorfullhashraw}{ad600a56b0ce23fc84b3c2d71665eb9d}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Anleitung zu Versuch 51 - Operationsverstärker}
+      \field{year}{2024}
+    \endentry
+    \entry{kirchhoff1845durchgang}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=4f0e45b721ebef5301909d1d42a31395}{%
+           family={Kirchhoff},
+           familyi={K\bibinitperiod},
+           given={Gustav\bibnamedelima Robert},
+           giveni={G\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \strng{namehash}{4f0e45b721ebef5301909d1d42a31395}
+      \strng{fullhash}{4f0e45b721ebef5301909d1d42a31395}
+      \strng{fullhashraw}{4f0e45b721ebef5301909d1d42a31395}
+      \strng{bibnamehash}{4f0e45b721ebef5301909d1d42a31395}
+      \strng{authorbibnamehash}{4f0e45b721ebef5301909d1d42a31395}
+      \strng{authornamehash}{4f0e45b721ebef5301909d1d42a31395}
+      \strng{authorfullhash}{4f0e45b721ebef5301909d1d42a31395}
+      \strng{authorfullhashraw}{4f0e45b721ebef5301909d1d42a31395}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annalen der Physik und Chemie}
+      \field{note}{Gallica}
+      \field{title}{Ueber den Durchgang eines elektrischen Stromes durch eine Ebene, insbesondere durch eine kreisförmige}
+      \field{volume}{64}
+      \field{year}{1845}
+      \field{pages}{513}
+      \range{pages}{1}
+    \endentry
+    \entry{uncertainties}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=bc8423f22bfc3f8a948ae1dc5ef5085a}{%
+           family={LEBIGOT},
+           familyi={L\bibinitperiod},
+           given={Eric\bibnamedelima O.},
+           giveni={E\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+      }
+      \strng{namehash}{bc8423f22bfc3f8a948ae1dc5ef5085a}
+      \strng{fullhash}{bc8423f22bfc3f8a948ae1dc5ef5085a}
+      \strng{fullhashraw}{bc8423f22bfc3f8a948ae1dc5ef5085a}
+      \strng{bibnamehash}{bc8423f22bfc3f8a948ae1dc5ef5085a}
+      \strng{authorbibnamehash}{bc8423f22bfc3f8a948ae1dc5ef5085a}
+      \strng{authornamehash}{bc8423f22bfc3f8a948ae1dc5ef5085a}
+      \strng{authorfullhash}{bc8423f22bfc3f8a948ae1dc5ef5085a}
+      \strng{authorfullhashraw}{bc8423f22bfc3f8a948ae1dc5ef5085a}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Uncertainties: a Python package for calculations with uncertainties}
+      \field{version}{3.1.7}
+      \verb{urlraw}
+      \verb https://pythonhosted.org/uncertainties/
+      \endverb
+      \verb{url}
+      \verb https://pythonhosted.org/uncertainties/
+      \endverb
+    \endentry
+    \entry{scipy}{article}{}{}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature Methods}
+      \field{title}{SciPy 1.0: Fundamental Algorithms for Scientific Computing in Python}
+      \field{volume}{17}
+      \field{year}{2020}
+      \field{pages}{261\bibrangedash 272}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1038/s41592-019-0686-2
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
