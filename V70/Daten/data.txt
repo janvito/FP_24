@@ -1,0 +1,5 @@
+p_E=9.3*10**-3 #mbar Enddruck Drehschieberpumpe
+p_E=1.08*10**-5 #mbar Enddruck D1 Turbopumpe 1
+p_E=2.43*10**-5 #mbar Enddruck D2 Turbopumpe 1
+p_E=6.5*10**-6 #mbar Enddruck D1 Turbopumpe 2
+p_E=1.93*10**-5 #mbar Enddruck D2 Turbopumpe 2
