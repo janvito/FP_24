@@ -1,0 +1,76 @@
+\documentclass[12pt]{article}
+
+% PACKAGES
+\usepackage[ngerman]{babel}
+\usepackage{lmodern} % Schriftart
+\usepackage{bookmark} % Für PDF Lesezeichen
+\usepackage{caption} % Für \caption*{}
+\usepackage{siunitx} % SI-Einheiten
+\usepackage{mathtools} % Verbessertes "amsmath" (https://de.overleaf.com/learn/latex/Articles%2FMathtools_-_for_beautiful_math)
+\usepackage{xcolor}   % Farbiger Text (https://www.overleaf.com/learn/latex/Using_colours_in_LaTeX)
+\usepackage{geometry} % Zur Einstellung des Layouts
+\usepackage{titlesec} % Einteilung des Inhalts (https://de.overleaf.com/learn/latex/Sections_and_chapters)
+\usepackage{fancyhdr} % Für Kopf-/ und Fußzeilen (https://www.overleaf.com/learn/latex/Headers_and_footers)
+\usepackage{parskip} % Änderung von Absätzen und Absatzeinzügen
+\usepackage{biblatex} % Verweise und Referenzen
+\usepackage{float} % Benötogt für Figuren und Tabellen
+\usepackage{graphicx} % Platzhalter Bilder
+\usepackage{booktabs} % Tabellen 
+\usepackage{csquotes} % Recommended package for biblatex
+\usepackage{hyphenat}
+\usepackage{listings} % for typesetting code 
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[version=4]{mhchem}
+
+% SETUP 
+\setlength{\headheight}{15.059pt} % Set headheight to at least 14.5pt
+\addtolength{\topmargin}{-2.5pt} % Make topmargin smaller to compensate
+\sisetup{
+  output-decimal-marker={,},
+  per-mode=fraction,
+  fraction-function=\tfrac,
+  separate-uncertainty=true
+}
+
+\addbibresource{Ressourcen/V61.bib}
+\geometry{ %A4
+  a4paper,
+  total = {170mm,240mm},
+  left = 20mm,
+  top = 30mm
+}
+\pagestyle{fancy}
+\captionsetup[figure]{
+    justification=centering, % Centered captions
+    labelsep=colon, % Separate label and caption with a period
+    singlelinecheck=false, % Always center even if the caption is short
+    labelfont=bf % Bold captions
+}
+% COMMANDS
+\newcommand{\uproman}[1]{\uppercase\expandafter{\romannumeral#1}} % Römische Zahlen
+
+\sisetup{
+  per-mode=fraction,
+  fraction-function=\tfrac,
+  separate-uncertainty=true,
+  output-decimal-marker={,}
+}
+% DOC
+\begin{document}
+
+% HEADER
+\input{content/titlepage}
+\newpage
+
+\input{content/zielsetzung}
+\input{content/theorie}
+\input{content/aufbau}
+\input{content/durchfuehrung}
+\input{content/auswertung}
+\input{content/diskussion}
+\input{content/literaturverzeichnis}
+\input{content/anhang}
+
+\end{document}
