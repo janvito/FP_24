@@ -1,2 +1,21 @@
 \section{Diskussion}\label{sec:diskussion}
-% Add your discussion content here
+Die Ergebnisse des Versuchs bestätigen den entscheidenden Vorteil hochreiner Germaniumdetektoren. Die Energiekalibrierung zeigt einen nahezu perfekten linearen Zusammenhang zwischen Kanalnummer und Energie, was durch den linearen Fit in \autoref{fig:Eu2} deutlich belegt wird. Auch die Vollenergienachweiswahrscheinlichkeit sinkt, wie erwartet, monoton mit steigender Energie, wobei insbesondere unter \SI{100}{keV} ein rapider Abfall zu beobachten ist.
+\begin{table}[h!]
+    \centering
+    \caption{Vergleich der Messergebnisse mit theoretischen Werten.}
+    \label{tab:vergleich}
+    \begin{tabular}{lccc}
+      \toprule
+      Parameter & Gemessen & Theorie & Abweichung (\%) \\
+      \midrule
+      Photopeak-Energie (keV) & 661.69 & 661.70 & 0.002\% \\
+      FWHM/FWTM-Verhältnis    & 1.82   & 1.823  & 0.16\% \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+Der Photopeak der $^{137}\text{Cs}$-Quelle wurde durch einen Gaußfit gut charakterisiert. Die gemessene Photopeak-Energie liegt bei \SI{661.687(0.006)}{keV} und stimmt damit nahezu exakt mit dem Literaturwert von \SI{661.70}{keV} überein. Auch das Verhältnis von FWHM zu FWTM, gemessen mit 1,82, entspricht in sehr guter Übereinstimmung dem theoretisch erwarteten Wert von ca. 1,823. Eine geringe Asymmetrie im Photopeak könnte auf Überlagerungen mit benachbarten Peaks oder systematische Effekte in der Effizienzkorrektur hindeuten.
+
+Bei der Analyse des Verhältnisses zwischen Compton-Kontinuum und Photopeak fällt auf, dass der gemessene Wert von $2,209 \pm 0,022$ deutlich unter dem theoretisch erwarteten Verhältnis von etwa 20 liegt. Diese Diskrepanz lässt sich durch mehrere Faktoren erklären: Zum einen wird das Compton-Kontinuum im niederenergetischen Bereich durch die Detektorschwelle abgeschnitten, was den gemessenen Gesamtinhalt des Kontinuums reduziert. Zum anderen führen Mehrfachstreuungen im Detektor dazu, dass ursprünglich Compton-gestreute Photonen nach weiteren Wechselwirkungen vollständig absorbiert werden und somit zum Photopeak beitragen. Zusätzlich können Rückstreuprozesse aus dem umgebenden Material die Verteilung verzerren.
+
+Die hochauflösende Messung ermöglicht zudem eine eindeutige Zuordnung der Gammastrahlungslinien, sodass die unbekannte Probe sicher der Uran-Radium-Reihe zugeordnet werden kann. Für zukünftige Untersuchungen sollten mögliche systematische Fehlerquellen, wie Detektorrauschen oder Einflüsse durch Hintergrundstrahlung, weitergehend analysiert werden.
+

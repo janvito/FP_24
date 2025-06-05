@@ -40,7 +40,7 @@ plt.figure(figsize=(8, 6))
 plt.plot(x_data, y_data, "k.", alpha=0.5, label='Data')
 plt.plot(x_fit, y_fit, "r-", label='Gaussian Fit')
 plt.title(r'Gaussian Fit Around Peak')
-plt.xlabel(r'Channel')
+plt.xlabel(r'Energy (keV)')
 plt.ylabel(r'Counts')
 plt.legend()
 plt.grid(True, linestyle='--', alpha=0.7)
@@ -58,7 +58,7 @@ plt.clf()
 # Peak positions and other constants
 peaks = [122.3952, 245.4096, 345.1008, 411.9744, 444.9984, 779.3664]
 W = np.array([0.2837, 0.0753, 0.2657, 0.02238, 0.03125, 0.1297])  # Based on table
-Activity = 1233
+Activity = 1176
 
 # Calculate Gaussian areas
 areas = []
@@ -89,10 +89,12 @@ print(areas_df)
 def Q(x, a, b, c):
     return a * b**x + c
 
+
 # Fit the Q function to the data
 Qparams, _ = curve_fit(Q, areas_df['Energy (keV)'], areas_df['Q'], p0=[0.2, 0.99, 0.01])
+perr = np.sqrt(np.diag(_))
 print(f"Q Fit Parameters: a = {Qparams[0]:.4f}, b = {Qparams[1]:.4f}, c = {Qparams[2]:.4f}")
-
+print(f"Q Fit Uncertainties: a = {perr[0]:.4f}, b = {perr[1]:.4f}, c = {perr[2]:.4f}")
 # Generate a smooth curve for Q fit using linspace
 x_fit = np.linspace(areas_df['Energy (keV)'].min(), areas_df['Energy (keV)'].max(), 500)
 y_fit = Q(x_fit, *Qparams)

@@ -322,25 +322,20 @@ Unter Nutzung der in \autoref{fig:7} gekennzeichneten Maxima folgt eine erste Sc
   d_\text{0} = \SI{1.02(0.34)e-07}{\meter}\text{.}
 \end{align*}
 \subsection{Parratt-Algorithmus und Dispersionsbestimmung}
-Durch Implementierung des Parratt-Algorithmus innerhalb von Python und einer aufwändigen Bestimmung der Parameter mit einer Kombination aus manueller und maschinengesteuerter Optimierung können die in \autoref{fig:9} und \autoref{fig:10} abgebildeten Plots generiert werden, wobei sich nach bestmöglicher Anpassung der Funktion an die Daten die Werte
+Durch Implementierung des Parratt-Algorithmus innerhalb von Python und einer aufwändigen Bestimmung der Parameter mit einer Kombination aus manueller und maschinengesteuerter Optimierung kann der in \autoref{fig:10} abgebildete Plot generiert werden, wobei sich nach bestmöglicher Anpassung der Funktion an die Daten die Werte
 \begin{align*}
-  \delta_\text{Si}  &=\num{7.7}\cdot10^{-06}\\
-  \delta_\text{Po}  &=\num{8.0}\cdot10^{-06}\\
-  \sigma_\text{Si}  &=\num{1.78}\cdot10^{-09}\\
-  \sigma_\text{Po}  &=\num{3.48}\cdot10^{-10}\\
-  \beta_\text{Si}   &=\num{3.21}\cdot10^{-07}\\
-  \beta_\text{Po}   &=\num{6.38}\cdot10^{-09}\\
-  d_1               &=\num{8.2}\cdot10^{-07}\si{\meter}
+  \delta_\text{Si}  &=\num{8.76}\cdot10^{-07} \\  % From δ₂ = 8.76e-7
+  \delta_\text{Po}  &=\num{7.11}\cdot10^{-06} \\  % From δ₃ = 7.11e-6
+  \sigma_\text{Si}  &=\num{6.43}\cdot10^{-10} \\  % From σ₁ = 6.43e-10 (interface Si/substrate)
+  \sigma_\text{Po}  &=\num{8.3}\cdot10^{-10} \\  % From σ₂ = 8.30e-10 (interface Si/Po)
+  \beta_\text{Si}   &=\num{1.77}\cdot10^{-07} \\  % From b₂ = 3.98e-9
+  \beta_\text{Po}   &=\num{3.55}\cdot10^{-08} \\  % From b₃ = 1.63e-7
+  d_1               &=\num{8.7}\cdot10^{-08}\si{\meter}  % From d₂ = 8.73e-8
 \end{align*}
 ergeben.
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=0.5]{Ressourcen/parratt6.png}
-  \caption{Parratt-Algorithmus speziell für die ersten zwei Oszillationen.}\label{fig:9}
-\end{figure}
-\begin{figure}[H]
-  \centering
-  \includegraphics[scale=0.5]{Ressourcen/parrattf.png}
+  \includegraphics[scale=0.5]{Ressourcen/parratttipp.png}
   \caption{Parratt-Algorithmus für den vollständigen Winkelbereich.}\label{fig:10}
 \end{figure}
 \subsection{Kritischer Winkel}
@@ -368,15 +363,15 @@ Jegliche Abweichungen bezüglich der Disperionen von Silizium und Polysterol las
 Die manuelle Anpassung von Parametern an Messdaten kann nur bedingt genau erfolgen, jedoch war sie in diesem Fall die einzige Möglichkeit, um Computerbedingte Probleme wie "$\text{Overfitting}$" $\text{ und/oder}$ lokale Parameterraum-Minima zu umgehen.
 \begin{table}[H]
   \centering
-  \renewcommand{\arraystretch}{1.5} % Adjust vertical spacing
+  \renewcommand{\arraystretch}{1.5}
   \begin{tabular}{c|c|c|c}
     \hline
     Parameter & Bestimmt & Theoretisch & Abweichung \\
     \hline
-    $\delta_\text{Si}$ &  $\num{7.7} \times 10^{-6}$ &    $\num{7.6}\times 10^{-6}$  &     $\num{1.3}\%$ \\
-    $\delta_\text{Po}$ &  $\num{8.0} \times 10^{-6}$ &    $\num{3.5}\times 10^{-6}$  &     $\num{46.9}\%$ \\
-    $\beta_\text{Si}$ &   $\num{3.21}  \times 10^{-7}$ &  $\num{1.04}\times 10^{-7}$ &   $\num{67.6}\%$ \\
-    $\beta_\text{Po}$ &   $\num{6.32}  \times 10^{-9}$ &  $\num{4.82}\times 10^{-9}$ &   $\num{20.7}\%$ \\
+    $\delta_\text{Si}$ &  $\num{8.8} \times 10^{-7}$ &    $\num{7.6}\times 10^{-6}$  &     $\num{88.4}\%$ \\
+    $\delta_\text{Po}$ &  $\num{7.1} \times 10^{-6}$ &    $\num{3.5}\times 10^{-6}$  &     $\num{102.9}\%$ \\
+    $\beta_\text{Si}$ &   $\num{1.77}  \times 10^{-7}$ &  $\num{1.04}\times 10^{-7}$ &   $\num{70.2}\%$ \\
+    $\beta_\text{Po}$ &   $\num{3.55}  \times 10^{-8}$ &  $\num{4.82}\times 10^{-9}$ &   $\num{636.5}\%$ \\
     \hline
   \end{tabular}
   \caption{Abweichungen der experimentell bestimmten Dispersion von den Theoriewerten.}
@@ -385,18 +380,18 @@ Die manuelle Anpassung von Parametern an Messdaten kann nur bedingt genau erfolg
 Selbes gilt für den per Parratt-Algorithmus bestimmten Wert für die Schichtdicke. Andererseits kann die Abweichung auch daher rühren, dass erst durch den Parratt-Algorithmus die Komplexität des Mehrschichtsystems berücksichtigt wurde, 
 \begin{table}[H]
   \centering
-  \renewcommand{\arraystretch}{1.5} % Adjust vertical spacing
+  \renewcommand{\arraystretch}{1.5}
   \caption{Vergleich der zwei Werte für die Schichtdicke.}
   \begin{tabular}{c|c|c}
     \hline
     $d_0$ & $d_1$ & $\Delta d$ \\
     \hline
-    $1.02(0.34)\times 10^{-7}\si{\meter}$ & $\SI{8.2e-07}{\meter}$ & $(\num{87.9}\pm\num{23.7})\%$  \\
+    $(1.02\pm0.34)\times 10^{-7}\si{\meter}$ & $\SI{8.73e-8}{\meter}$ & $(\num{14.4}\pm\num{11.8})\%$  \\
   \end{tabular}
   \label{tab:schichtdicke}
 \end{table}
 Da sich der Kritische Winkel aus den Größen $\delta$ berechnet, ist der Vergleich zum Theoriewert hier redundant.
-Im Hinblick auf \autoref{fig:9} ist jedoch zu erkennen, dass der per Parratt-Algorithmus bestimmte Wert sich mit der "Kante" vor Abfall der Intensität deckt.
+Im Hinblick auf \autoref{fig:10} ist jedoch zu erkennen, dass der per Parratt-Algorithmus bestimmte Wert sich mit der "Kante" vor Abfall der Intensität deckt.
 \\\\
 Allgemein lässt sich sagen, dass aufgrund der schwierigen und fehleranfälligen Implementierung der Parratt-Algorithmus viele neue Fehlerquellen entstehen, dennoch liefert dieser akzeptable Ergebnisse.
 
@@ -406,26 +401,12 @@ Allgemein lässt sich sagen, dass aufgrund der schwierigen und fehleranfälligen
 
 \section{Anhang}\label{sec:anhang}
 \begin{lstlisting}[language=Python, caption={Parratt Implementation}, label={lst:python_code}, basicstyle=\footnotesize]  import numpy as np
+  import numpy as np
   import matplotlib.pyplot as plt
-  from scipy.optimize import curve_fit
-  import random
-  
-  # Enable LaTeX rendering in Matplotlib
-  plt.rc('text', usetex=True)
-  plt.rc('text.latex', preamble=r'\usepackage{siunitx}')
-  plt.rc('font', family='serif')
-  plt.rcParams['figure.figsize'] = (10, 8)
-  plt.rcParams['font.size'] = 20
-  plt.rcParams['lines.linewidth'] = 2
-  
-  plt.xlabel(r"$\theta$ $[\si{\degree}]$")
-  plt.ylabel(r"$X_1=\frac{R_1}{T_1}$")
-  plt.yscale("log")
   
   def parratt(a_i, del2, del3, sig1, sig2, b2, b3, d2):
       a_irad = np.deg2rad(a_i)
       k = 2 * np.pi / lamda
-  
       n2 = 1 - del2 - b2 * 1j
       n3 = 1 - del3 - b3 * 1j
   
@@ -444,15 +425,16 @@ Allgemein lässt sich sagen, dass aufgrund der schwierigen und fehleranfälligen
   
       return np.abs(x1) ** 2
   
-  theta, counts = np.genfromtxt('../Daten/CSV/probenscan_clean.csv', delimiter=',', unpack=True)
-  theta, counts = theta[15:67], counts[15:67]
-  lamda = 1.54 * 10**(-10)
   
+  theta, counts = np.genfromtxt('../Daten/CSV/probenscan_clean.csv', delimiter=',', unpack=True)
+  theta, counts = theta[25:320], counts[25:320]
+  lamda = 1.54 * 10**(-10)
+  guess= np.array([8.76e-7, 7.11e-6, 6.43e-10, 8.30e-10, 1.77e-7, 3.555e-08, 8.73e-8])
   plt.axvline(np.sqrt(2*7.809387428660141e-06)*360/(2*np.pi),color="red",label=r"Bestimmter kritischer Winkel von Silizium")
-  plt.plot(theta,np.exp(counts),"k.",label=r"Messdaten")  plt.plot(theta,np.exp(parratt(theta,7.809387428660141e-06 ,6.462924555141031e-06 ,2.084494881704885e-09 ,8.274921568775992e-10 ,1.807969456700064e-07 ,9.084631342956966e-08 ,4.876432802470713e-08)),label=r"Parratt-Reflektivitaet")
-
-  plt.legend(loc="best")
+  plt.plot(theta,(counts),"k-",alpha=0.5,label=r"Gemessene Reflexivität")
+  plt.plot(theta,parratt(theta,*guess),color="blue",label=r"Parratt-Reflexivität")
   plt.tight_layout()
-  plt.savefig("../Ressourcen/parratt.png")
+  plt.show()
+  plt.legend()
   \end{lstlisting}
 \end{document}
