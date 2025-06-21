@@ -1,4 +1,5 @@
-\section{Theorie}\label{sec:theorie}
+\section[Theorie]{Theorie\footnote{Die Darstellung in diesem Kapitel folgt im
+Wesentlichen den Ausführungen in \cite{Demtroeder, eichler}.}}\label{sec:theorie}
 Nachdem zunächst auf den Grundlegenden Aufbau eines Lasers und die Einzelheiten des Entstehungsprozesses von Laserstrahlung und relevante charakteristische Eigenschaften der Wellen eingegangen wird, folgt mit diesem Wissen eine Einführung in die Funktionsweise des verwendeten \ce{He}-\ce{Ne}-Lasers.
 \subsection{Aufbau eines Lasers}
 Im wesentlichen besteht ein Laser aus drei Komponenten: dem \textbf{aktiven Medium}, der (selektiven) \textbf{Energiepumpe} und dem \textbf{Resonator}.\\
@@ -79,7 +80,7 @@ Wegen unterschiedlichen Beugungsverlusten abhängig vom Abstand zum Spiegelmitte
 \end{figure}
 Wird mittels eines iterativen Verfahrens basierend auf der Kirchhoff-Fresnel'schen Beugungstheorie der Resonator als eine Lochblenden-Kette  wie in \autoref{fig:kette} modelliert, so ergibt sich für die Amplitude der Elektromagnetischen Strahlung in eine Ebene bei beliebigem $z$ Wert
 \begin{align}
-    A_\text{mn}(x,y,z)=C_\text{mn}H_\text{m}(x^*)H_\text{n}(y^*)\exp{\left(-\frac{{x^*}^2+{y^*}^2}{4}\right)}\exp{(-i\phi)}\text{.}
+    A_\text{mn}(x,y,z)=C_\text{mn}H_\text{m}(x^*)H_\text{n}(y^*)\exp{\left(-\frac{{x^*}^2+{y^*}^2}{4}\right)}\exp{(-i\phi)}\text{.}\label{eqn:A}
 \end{align}
 Hierbei beschreiben $m$ und $n$ die Anzahl der Knotenlinien in x bzw y-Richtung, $C$ einen Normierungsfaktor, $H_\text{k}$ das Hermitischen Polynom $k$-ter Ordnung, $\phi$ die Phase, $x^*=\sqrt{2}\frac{x}{w}$ und $y^*=\sqrt{2}\frac{y}{w}$ sind normierte Koordinaten und $w(z)=\sqrt{\lambda\frac{d}{2\pi}{\left[1+\left(\frac{2z}{d}\right)^2\right]}}$ ein Maß für die radiale Abhängigkeit. Die Phase ist hinsichtlich der Messbaren Intensität $I\propto|A_\text{mn}|^2$ an dieser Stelle nicht von Bedeutung.
 \begin{figure}[H]
@@ -134,7 +135,7 @@ beschrieben. Dies ist in \autoref{fig:alpha} zusammen mit den Eigenfrequenzen de
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.5]{Ressourcen/alpha.png}
-    \caption{Schematischer Plot der Verstärkung eines Lasers und den erlaubten Moden oberhalb des Schwellwerts\cite{Demtroeder}}\label{fig:alpha}
+    \caption{Schematischer Plot der Verstärkung eines Lasers und den erlaubten Moden oberhalb des Schwellwerts648.0 ± 34.4}\label{fig:alpha}
 \end{figure}
 Als letzten Schritt kann nun die Nettoverstärkung unter Berücksichtigung der Frequenzabhängigen Verluste aufgetragen werden, wie in \autoref{fig:netto} zu sehen. Logischerweise kann stabile Lasertätigkeit nur für Verstärkungen oberhalb der Schwellwertgerade $G=1$ einsetzen.
 \begin{figure}[H]
