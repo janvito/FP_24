@@ -78,6 +78,36 @@ dargestellt.
 Die periodische Form der Intensität rührt von dem Einsatz der Brewsterfenster an den Enden des Laserrohrs her, die im Brewster-Winkel zur optischen Achse stehen und das zur Einfallsebene parallel polarisierte Licht an diesen nicht durch Reflexion geschwächt wird. Aufgrund der vielen Umläufe des Lichts im Resonator kann selbst ein geringer Verlust durch Reflexion am Fenster die Entstehung einer Stabilen Mode in der zugehörigen Polarisationsrichtung verhindern.
 So ist am niedrigen Wert des Parameters $b$ zu sehen, wie ideal linear das Laserlicht polarisiert ist.
 \subsection{Bestimmung der Longitudinalmoden}
+Wie in \autoref{subsubsec:frequenzen} beschrieben bilden sich mehrere longitudinale Moden im Resonator mit den Frequenzabständen $\delta\nu=\frac{c}{2d}$ aus.
+Die gemessenen Frequenzen der Peaks der Fourierzerlegung sind in \autoref{tab:freqs} aufgeführt.
+\begin{table}[H]
+    \centering
+    \caption{Gemessene Modenfrequenzen in Abhängigkeit der Resonatorlänge}
+    \label{tab:freqs}
+    \begin{tabular}{l | l}
+      \toprule
+      {Resonatorlänge $d$ [\si{\centi\meter}]} & {Modenfrequenzen $f_n$ [\si{\kilo\hertz}]} \\
+      \midrule
+      62  & 239,\ 478,\ 718,\ 957,\ 1197 \\
+      72  & 206,\ 413,\ 620,\ 826,\ 1033,\ 1240 \\
+      82  & 181,\ 363.7,\ 545.5,\ 727,\ 909,\ 1091,\ 1273 \\
+      92  & 161.7,\ 323,\ 485,\ 647,\ 810,\ 972,\ 1134,\ 1296 \\
+      102 & 146,\ 292,\ 438,\ 584,\ 731,\ 877,\ 1020,\ 1169,\ 1317 \\
+      144 & \makecell[l]{103,\ 207,\ 310,\ 414,\ 517,\ 621,\ 724,\ 828,\\ 932,\ 1035,\ 1140,\ 1242,\ 1346} \\
+      \bottomrule
+    \end{tabular}
+\end{table}
+Die gemittelten Abstände sind zusammen mit der theoretischen Abhängigkeit in \autoref{fig:deltaf} zu sehen.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.55]{Skripte/deltaf.png}
+    \caption{Messdaten und Theoretischer Frequenzabstand in Abhängigkeit der Resonatorlänge}\label{fig:deltaf}
+\end{figure}
+Die Dopplerverbreitung des \SI{633}{\nano\meter} Übergangs von Neon ist bei Raumtemperatur durch
+\begin{align}
+    \delta f = \frac{f_0}{c} \sqrt{\frac{8 k_B T \ln 2}{m_\text{Ne}}}=\SI{1.29}{\giga\hertz}
+\end{align}
+gegeben.
 \subsection{Ermittlung der Wellenlänge}
 Die mittleren Abstände der 1. und 2. Maxima zum Zentrum sind in \autoref{tab:wl} aufgeführt.
 \begin{table}[H]
