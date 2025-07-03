@@ -1,2 +1,38 @@
 \section{Diskussion}\label{sec:diskussion}
-% Add your discussion content here
+Die verschiedenen gemessenen Charakteristika des verwendeten Lasers und seiner Strahlung sind prinzipiell geglückt, wobei verschiedene Fehlerquellen zu Abweichungen von den theoretischen Werten führen.
+
+Das Überprüfen der Stabilitätsbedingungen wird durch die hohe Empfindlichkeit des Resonators in Bezug auf seine optische Achse erschwert. Die Nachjustierung musste mehrfach abgebrochen werden, obwohl sie schrittweise erfolgte. Der Laser musste daraufhin vollständig neu justiert werden, da ein einmaliger Stabilitätsverlust in der Regel nicht rückgängig gemacht werden konnte.
+Des weiteren konnte die Stabilität des konkav-konkaven Resonators nicht in vollem Umfang gemessen werden, da die Maße der verwendeten Schiene die Resonatorlänge beschränkt.
+Die Abweichungen sind in \autoref{tab:ustabil} aufgeführt.
+\begin{table}[H]
+    \centering
+    \caption{Theoretische und experimentelle maximale Resonatorlängen mit Abweichungen}
+    \label{tab:ustabil}
+    \begin{tabular}{l | l | l | l}
+      \toprule
+      {Resonatortyp} & {\(L_{\text{Theorie}}\) [\si{\centi\meter}]} & {\(L_{\text{Exp}}\) [\si{\centi\meter}]} & {Abweichung [\%]} \\
+      \midrule
+      Planar-konkav & 140 & \(121 \pm 1\) & \(13.57 \pm 0.71\) \\
+      Konkav-konkav & 280 & \(218 \pm 1\) & \(22.14 \pm 0.36\) \\
+      \bottomrule
+    \end{tabular}
+\end{table}
+
+Die gemessenen Intensitäten der TEM-Moden decken sich in ihrem Verlauf weitesgehend mit den Theoretisch modellierten und die Unsicherheiten der Parameter sind relativ niedrig. Eine mögliche systematische Fehlerquelle für die $\mathrm{TEM_{10}}$-Mode ist der Winkel des Wolframdrahts relativ zur Messachse der Photodiode. Eine Abweichung von der y-Achse führt zu einem rotierten Intensitätsprofil, das nicht länger y-achsensymmetrisch ist und somit die Messung entlang der x-Achse verfälscht.
+
+Hinsichtlich der Polarisationsbestimmung des Strahls ist wie bereits in \autoref{subsec:polar} erwähnt der niedrige Wert des globalen Intensitäts-Offsets $b$ ein Aufschluss darauf, wie ideal linear Polarisiert das Licht des Lasers tatsächlich ist. Numerisch könnte der Fehler wohlmöglich durch eine höhere Winkelauflösung der Messung verringert werden.
+
+Aus der theoretischen Relation für die Frequenzabstände der longitudinalen Moden lässt sich die Formel $c=\Delta f \cdot 2d$ bilden. Werden nun die gemessenen Werte eingesetzt und über alle verwendeten Resonatorlängen gemittelt, ergibt sich der Wert
+\begin{align}
+    c_\text{exp}=\SI{2.98(0.01)e8}{\meter\per\second}\text{,}
+\end{align}
+und somit eine Abweichung von \SI{0.6(1.3)}{\percent}.
+Für größere Resonatorlängen können mehr Moden festgestellt werden wie in \autoref{fig:doppler} anschaulich gemacht wird. Dies deckt sich exakt mit den theoretischen Erwartungen und für $d=\SI{144}{\centi\meter}$ kann die Dopplerbreite bereits sehr gut approximiert werden, als Differenz der maximalen Freqzenzabstände vom Mittelwert. Es ergibt sich
+\begin{align}
+    \delta f_\text{exp}=\SI{1243(14)}{\mega\hertz}
+\end{align}
+was einer Abweichung bezüglich des theoretischen Werts von \SI{3.64(1.08)}{\percent} entspricht.
+
+Zuletzt ergibt sich für die experimentell bestimmte Wellenlänge eine Abweichung von \SI{2.36(5.37)}{\percent}.
+
+Alle Abweichungen der gemessenen oder ermittelten Ergebnisse befinden sich in einem annehmbaren Rahmen entsprechend der Sensibilität des Versuchsaufbaus und der nicht verlustfreien Operation des Lasers.

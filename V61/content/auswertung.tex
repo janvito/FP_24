@@ -20,13 +20,13 @@ Wie in \autoref{subsubsec:stabilitaet} erläutert, ist Stabilität nur unter der
 \end{figure}
 Es ergeben sich die theoretischen Grenzwerte der Resonatorlänge von 
 \begin{align}
-    L_\text{max k-p}=R=1400
+    L_\text{max k-p}=R=\SI{140}{\centi\meter}
 \end{align}
 beziehungsweise 
 \begin{align}
-    L_\text{max k-k}=2\cdot R=2800\text{.}
+    L_\text{max k-k}=2\cdot R=\SI{280}{\centi\meter}\text{.}
 \end{align}
-Im Versuch konnte für den planar-konkaven Resonator eine maximale Länge von \SI{121}{\centi\meter} stabilisiert werden, für die konkav-konkave Kombination wurde die gesamte zur Verfügung stehende Schiene verwendet um eine Resonatorlänge von \SI{218}{\centi\meter} zu erreichen.
+Im Versuch konnte für den planar-konkaven Resonator eine maximale Länge von \SI{121(1)}{\centi\meter} stabilisiert werden, für die konkav-konkave Kombination wurde die gesamte zur Verfügung stehende Schiene verwendet um eine Resonatorlänge von \SI{218(1)}{\centi\meter} zu erreichen.
 \subsubsection{Intensität von TEM-Moden}
 Die gemessene Intensität in Abhängigkeit des senkrechten Abstandes zum Strahl ist in \autoref{fig:tem00} dargestellt. Des weiteren ist gemäß der Relation $I(x)=|A(x,y=0,z=const)|^2$ und \autoref{eqn:A} eine Ausgleichfunktion der Form
 \begin{align}
@@ -57,7 +57,7 @@ ist zusammen mit den Messwerten in \autoref{fig:tem10} zu sehen.
     \caption{Intensität der $\mathrm{TEM_{10}}$-Mode in gegebener x-Richtung}\label{fig:tem10}
 \end{figure}
 
-\subsection{Polarisationsbestimmung}
+\subsection{Polarisationsbestimmung}\label{subsec:polar}
 Die Intensität in Abhängigkeit vom Rotationswinkel des Polarisationsfilters $\alpha$ sind in \autoref{fig:polarisation} zusammen mit einer Ausgleichfunktion der Form
 \begin{align}
     I(\alpha)= A\cdot \sin^2{\left(\omega\alpha+\phi\right)}+b
@@ -108,6 +108,12 @@ Die Dopplerverbreitung des \SI{633}{\nano\meter} Übergangs von Neon ist bei Rau
     \delta f = \frac{f_0}{c} \sqrt{\frac{8 k_B T \ln 2}{m_\text{Ne}}}=\SI{1.29}{\giga\hertz}
 \end{align}
 gegeben.
+Das zugehörige Dopplerprofil ist schematisch als Verstärkungsprofil entsprechend \autoref{eqn:doppler} zusammen mit den Modenfrequenzen relativ zur mittleren Übergangs- beziehungsweise Modenfrequenz in \autoref{fig:doppler} zu sehen.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.55]{Skripte/doppler.png}
+    \caption{Dopplerprofil des $\SI{633}{\nano\meter}$ Übergangs mit Dopplerbreite und ausgewählten Modenfrequenzen}\label{fig:doppler}
+\end{figure}
 \subsection{Ermittlung der Wellenlänge}
 Die mittleren Abstände der 1. und 2. Maxima zum Zentrum sind in \autoref{tab:wl} aufgeführt.
 \begin{table}[H]
